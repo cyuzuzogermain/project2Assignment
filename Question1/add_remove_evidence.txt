@@ -15,11 +15,13 @@
  seeding).  Growth doubles the capacity; shrinking triggers when
  count < capacity/4 and halves the capacity (floor = initial 4).
 
---- Phases: (A) show state   (B) add 5  -> grow 16 -> 32
-            (C) remove 17    -> shrink 32 -> 16 -> 8 -> 4, down to empty
-            (D) add 9        -> grow 4 -> 8 -> 16
-            (E) rejections: duplicate ID, grade > 100, non-numeric grade,
-                non-positive ID, empty name, empty course
+--- Phases: (A) show state   (B) add 3        12 -> 15 records
+            (C) remove 3     15 -> 12 records
+            (D) add 3        12 -> 15 records
+            (E) rejections: duplicate ID, grade > 100, non-numeric grade
+        (three samples per example; none of the kept adds/removes
+         crosses a realloc threshold, so only the seeding growth
+         appears below)
 ======================================================================
 [memory] array grew:   count=4 capacity=8
 [memory] array grew:   count=8 capacity=16
@@ -114,47 +116,8 @@ Added 'Nina Petrova' (ID 1015, History, 49.0). Records: 15, capacity: 16
   9. Display summary report
  10. Exit
 --------------------------------------------------------------
-Choose an option (1-10): 1
-Student ID (positive integer): 1016
-Student name: Pedro Alvarez
-Course: Physics
-Grade (0-100): 82
-Added 'Pedro Alvarez' (ID 1016, Physics, 82.0). Records: 16, capacity: 16
-
----------------------------- MENU ----------------------------
-  1. Add student
-  2. Display all students
-  3. Sort students
-  4. Calculate average grade
-  5. Find top-performing student
-  6. Search student
-  7. Remove student (by ID)
-  8. Run custom analysis (Academic Risk Index)
-  9. Display summary report
- 10. Exit
---------------------------------------------------------------
-Choose an option (1-10): 1
-Student ID (positive integer): 1017
-Student name: Yuki Sato
-Course: Mathematics
-Grade (0-100): 33
-[memory] array grew:   count=16 capacity=32
-Added 'Yuki Sato' (ID 1017, Mathematics, 33.0). Records: 17, capacity: 32
-
----------------------------- MENU ----------------------------
-  1. Add student
-  2. Display all students
-  3. Sort students
-  4. Calculate average grade
-  5. Find top-performing student
-  6. Search student
-  7. Remove student (by ID)
-  8. Run custom analysis (Academic Risk Index)
-  9. Display summary report
- 10. Exit
---------------------------------------------------------------
 Choose an option (1-10): 0
-[memory] internal state: count=17 capacity=32 (4608 bytes)
+[memory] internal state: count=15 capacity=16 (2304 bytes)
 
 ---------------------------- MENU ----------------------------
   1. Add student
@@ -171,7 +134,7 @@ Choose an option (1-10): 0
 Choose an option (1-10): 7
 Student ID to remove: 1001
 Removed 'Alice Johnson' (ID 1001).
-Records: 16, capacity: 32
+Records: 14, capacity: 16
 
 ---------------------------- MENU ----------------------------
   1. Add student
@@ -188,7 +151,7 @@ Records: 16, capacity: 32
 Choose an option (1-10): 7
 Student ID to remove: 1002
 Removed 'Brian Okafor' (ID 1002).
-Records: 15, capacity: 32
+Records: 13, capacity: 16
 
 ---------------------------- MENU ----------------------------
   1. Add student
@@ -205,248 +168,7 @@ Records: 15, capacity: 32
 Choose an option (1-10): 7
 Student ID to remove: 1003
 Removed 'Chloe Ramirez' (ID 1003).
-Records: 14, capacity: 32
-
----------------------------- MENU ----------------------------
-  1. Add student
-  2. Display all students
-  3. Sort students
-  4. Calculate average grade
-  5. Find top-performing student
-  6. Search student
-  7. Remove student (by ID)
-  8. Run custom analysis (Academic Risk Index)
-  9. Display summary report
- 10. Exit
---------------------------------------------------------------
-Choose an option (1-10): 7
-Student ID to remove: 1004
-Removed 'Daniel Petrov' (ID 1004).
-Records: 13, capacity: 32
-
----------------------------- MENU ----------------------------
-  1. Add student
-  2. Display all students
-  3. Sort students
-  4. Calculate average grade
-  5. Find top-performing student
-  6. Search student
-  7. Remove student (by ID)
-  8. Run custom analysis (Academic Risk Index)
-  9. Display summary report
- 10. Exit
---------------------------------------------------------------
-Choose an option (1-10): 7
-Student ID to remove: 1005
-Removed 'Emma Thompson' (ID 1005).
-Records: 12, capacity: 32
-
----------------------------- MENU ----------------------------
-  1. Add student
-  2. Display all students
-  3. Sort students
-  4. Calculate average grade
-  5. Find top-performing student
-  6. Search student
-  7. Remove student (by ID)
-  8. Run custom analysis (Academic Risk Index)
-  9. Display summary report
- 10. Exit
---------------------------------------------------------------
-Choose an option (1-10): 7
-Student ID to remove: 1006
-Removed 'Farid Haddad' (ID 1006).
-Records: 11, capacity: 32
-
----------------------------- MENU ----------------------------
-  1. Add student
-  2. Display all students
-  3. Sort students
-  4. Calculate average grade
-  5. Find top-performing student
-  6. Search student
-  7. Remove student (by ID)
-  8. Run custom analysis (Academic Risk Index)
-  9. Display summary report
- 10. Exit
---------------------------------------------------------------
-Choose an option (1-10): 7
-Student ID to remove: 1007
-Removed 'Grace Kim' (ID 1007).
-Records: 10, capacity: 32
-
----------------------------- MENU ----------------------------
-  1. Add student
-  2. Display all students
-  3. Sort students
-  4. Calculate average grade
-  5. Find top-performing student
-  6. Search student
-  7. Remove student (by ID)
-  8. Run custom analysis (Academic Risk Index)
-  9. Display summary report
- 10. Exit
---------------------------------------------------------------
-Choose an option (1-10): 7
-Student ID to remove: 1008
-Removed 'Hugo Silva' (ID 1008).
-Records: 9, capacity: 32
-
----------------------------- MENU ----------------------------
-  1. Add student
-  2. Display all students
-  3. Sort students
-  4. Calculate average grade
-  5. Find top-performing student
-  6. Search student
-  7. Remove student (by ID)
-  8. Run custom analysis (Academic Risk Index)
-  9. Display summary report
- 10. Exit
---------------------------------------------------------------
-Choose an option (1-10): 7
-Student ID to remove: 1009
-Removed 'Isabel Novak' (ID 1009).
-Records: 8, capacity: 32
-
----------------------------- MENU ----------------------------
-  1. Add student
-  2. Display all students
-  3. Sort students
-  4. Calculate average grade
-  5. Find top-performing student
-  6. Search student
-  7. Remove student (by ID)
-  8. Run custom analysis (Academic Risk Index)
-  9. Display summary report
- 10. Exit
---------------------------------------------------------------
-Choose an option (1-10): 7
-Student ID to remove: 1010
-Removed 'Jamal Wright' (ID 1010).
-[memory] array shrank: count=7 capacity=16
-Records: 7, capacity: 16
-
----------------------------- MENU ----------------------------
-  1. Add student
-  2. Display all students
-  3. Sort students
-  4. Calculate average grade
-  5. Find top-performing student
-  6. Search student
-  7. Remove student (by ID)
-  8. Run custom analysis (Academic Risk Index)
-  9. Display summary report
- 10. Exit
---------------------------------------------------------------
-Choose an option (1-10): 7
-Student ID to remove: 1011
-Removed 'Karla Mendes' (ID 1011).
-Records: 6, capacity: 16
-
----------------------------- MENU ----------------------------
-  1. Add student
-  2. Display all students
-  3. Sort students
-  4. Calculate average grade
-  5. Find top-performing student
-  6. Search student
-  7. Remove student (by ID)
-  8. Run custom analysis (Academic Risk Index)
-  9. Display summary report
- 10. Exit
---------------------------------------------------------------
-Choose an option (1-10): 7
-Student ID to remove: 1012
-Removed 'Liam O'Brien' (ID 1012).
-Records: 5, capacity: 16
-
----------------------------- MENU ----------------------------
-  1. Add student
-  2. Display all students
-  3. Sort students
-  4. Calculate average grade
-  5. Find top-performing student
-  6. Search student
-  7. Remove student (by ID)
-  8. Run custom analysis (Academic Risk Index)
-  9. Display summary report
- 10. Exit
---------------------------------------------------------------
-Choose an option (1-10): 7
-Student ID to remove: 1013
-Removed 'Mira Tanaka' (ID 1013).
-Records: 4, capacity: 16
-
----------------------------- MENU ----------------------------
-  1. Add student
-  2. Display all students
-  3. Sort students
-  4. Calculate average grade
-  5. Find top-performing student
-  6. Search student
-  7. Remove student (by ID)
-  8. Run custom analysis (Academic Risk Index)
-  9. Display summary report
- 10. Exit
---------------------------------------------------------------
-Choose an option (1-10): 7
-Student ID to remove: 1014
-Removed 'Otto Gruber' (ID 1014).
-[memory] array shrank: count=3 capacity=8
-Records: 3, capacity: 8
-
----------------------------- MENU ----------------------------
-  1. Add student
-  2. Display all students
-  3. Sort students
-  4. Calculate average grade
-  5. Find top-performing student
-  6. Search student
-  7. Remove student (by ID)
-  8. Run custom analysis (Academic Risk Index)
-  9. Display summary report
- 10. Exit
---------------------------------------------------------------
-Choose an option (1-10): 7
-Student ID to remove: 1015
-Removed 'Nina Petrova' (ID 1015).
-Records: 2, capacity: 8
-
----------------------------- MENU ----------------------------
-  1. Add student
-  2. Display all students
-  3. Sort students
-  4. Calculate average grade
-  5. Find top-performing student
-  6. Search student
-  7. Remove student (by ID)
-  8. Run custom analysis (Academic Risk Index)
-  9. Display summary report
- 10. Exit
---------------------------------------------------------------
-Choose an option (1-10): 7
-Student ID to remove: 1016
-Removed 'Pedro Alvarez' (ID 1016).
-[memory] array shrank: count=1 capacity=4
-Records: 1, capacity: 4
-
----------------------------- MENU ----------------------------
-  1. Add student
-  2. Display all students
-  3. Sort students
-  4. Calculate average grade
-  5. Find top-performing student
-  6. Search student
-  7. Remove student (by ID)
-  8. Run custom analysis (Academic Risk Index)
-  9. Display summary report
- 10. Exit
---------------------------------------------------------------
-Choose an option (1-10): 7
-Student ID to remove: 1017
-Removed 'Yuki Sato' (ID 1017).
-Records: 0, capacity: 4
+Records: 12, capacity: 16
 
 ---------------------------- MENU ----------------------------
   1. Add student
@@ -461,7 +183,7 @@ Records: 0, capacity: 4
  10. Exit
 --------------------------------------------------------------
 Choose an option (1-10): 0
-[memory] internal state: count=0 capacity=4 (576 bytes)
+[memory] internal state: count=12 capacity=16 (2304 bytes)
 
 ---------------------------- MENU ----------------------------
   1. Add student
@@ -480,7 +202,7 @@ Student ID (positive integer): 1020
 Student name: Zoe Adler
 Course: Biology
 Grade (0-100): 90
-Added 'Zoe Adler' (ID 1020, Biology, 90.0). Records: 1, capacity: 4
+Added 'Zoe Adler' (ID 1020, Biology, 90.0). Records: 13, capacity: 16
 
 ---------------------------- MENU ----------------------------
   1. Add student
@@ -499,7 +221,7 @@ Student ID (positive integer): 1021
 Student name: Aaron Blake
 Course: Biology
 Grade (0-100): 57
-Added 'Aaron Blake' (ID 1021, Biology, 57.0). Records: 2, capacity: 4
+Added 'Aaron Blake' (ID 1021, Biology, 57.0). Records: 14, capacity: 16
 
 ---------------------------- MENU ----------------------------
   1. Add student
@@ -518,46 +240,7 @@ Student ID (positive integer): 1022
 Student name: Carla Dias
 Course: Chemistry
 Grade (0-100): 64
-Added 'Carla Dias' (ID 1022, Chemistry, 64.0). Records: 3, capacity: 4
-
----------------------------- MENU ----------------------------
-  1. Add student
-  2. Display all students
-  3. Sort students
-  4. Calculate average grade
-  5. Find top-performing student
-  6. Search student
-  7. Remove student (by ID)
-  8. Run custom analysis (Academic Risk Index)
-  9. Display summary report
- 10. Exit
---------------------------------------------------------------
-Choose an option (1-10): 1
-Student ID (positive integer): 1023
-Student name: Dev Patel
-Course: Chemistry
-Grade (0-100): 38
-Added 'Dev Patel' (ID 1023, Chemistry, 38.0). Records: 4, capacity: 4
-
----------------------------- MENU ----------------------------
-  1. Add student
-  2. Display all students
-  3. Sort students
-  4. Calculate average grade
-  5. Find top-performing student
-  6. Search student
-  7. Remove student (by ID)
-  8. Run custom analysis (Academic Risk Index)
-  9. Display summary report
- 10. Exit
---------------------------------------------------------------
-Choose an option (1-10): 1
-Student ID (positive integer): 1024
-Student name: Elena Rossi
-Course: Biology
-Grade (0-100): 76
-[memory] array grew:   count=4 capacity=8
-Added 'Elena Rossi' (ID 1024, Biology, 76.0). Records: 5, capacity: 8
+Added 'Carla Dias' (ID 1022, Chemistry, 64.0). Records: 15, capacity: 16
 
 ---------------------------- MENU ----------------------------
   1. Add student
@@ -572,137 +255,7 @@ Added 'Elena Rossi' (ID 1024, Biology, 76.0). Records: 5, capacity: 8
  10. Exit
 --------------------------------------------------------------
 Choose an option (1-10): 0
-[memory] internal state: count=5 capacity=8 (1152 bytes)
-
----------------------------- MENU ----------------------------
-  1. Add student
-  2. Display all students
-  3. Sort students
-  4. Calculate average grade
-  5. Find top-performing student
-  6. Search student
-  7. Remove student (by ID)
-  8. Run custom analysis (Academic Risk Index)
-  9. Display summary report
- 10. Exit
---------------------------------------------------------------
-Choose an option (1-10): 1
-Student ID (positive integer): 1025
-Student name: Farah Khan
-Course: Physics
-Grade (0-100): 44
-Added 'Farah Khan' (ID 1025, Physics, 44.0). Records: 6, capacity: 8
-
----------------------------- MENU ----------------------------
-  1. Add student
-  2. Display all students
-  3. Sort students
-  4. Calculate average grade
-  5. Find top-performing student
-  6. Search student
-  7. Remove student (by ID)
-  8. Run custom analysis (Academic Risk Index)
-  9. Display summary report
- 10. Exit
---------------------------------------------------------------
-Choose an option (1-10): 1
-Student ID (positive integer): 1026
-Student name: Gustav Berg
-Course: Mathematics
-Grade (0-100): 88
-Added 'Gustav Berg' (ID 1026, Mathematics, 88.0). Records: 7, capacity: 8
-
----------------------------- MENU ----------------------------
-  1. Add student
-  2. Display all students
-  3. Sort students
-  4. Calculate average grade
-  5. Find top-performing student
-  6. Search student
-  7. Remove student (by ID)
-  8. Run custom analysis (Academic Risk Index)
-  9. Display summary report
- 10. Exit
---------------------------------------------------------------
-Choose an option (1-10): 1
-Student ID (positive integer): 1027
-Student name: Hana Yusuf
-Course: Biology
-Grade (0-100): 52
-Added 'Hana Yusuf' (ID 1027, Biology, 52.0). Records: 8, capacity: 8
-
----------------------------- MENU ----------------------------
-  1. Add student
-  2. Display all students
-  3. Sort students
-  4. Calculate average grade
-  5. Find top-performing student
-  6. Search student
-  7. Remove student (by ID)
-  8. Run custom analysis (Academic Risk Index)
-  9. Display summary report
- 10. Exit
---------------------------------------------------------------
-Choose an option (1-10): 1
-Student ID (positive integer): 1028
-Student name: Ivan Petrov
-Course: Physics
-Grade (0-100): 29
-[memory] array grew:   count=8 capacity=16
-Added 'Ivan Petrov' (ID 1028, Physics, 29.0). Records: 9, capacity: 16
-
----------------------------- MENU ----------------------------
-  1. Add student
-  2. Display all students
-  3. Sort students
-  4. Calculate average grade
-  5. Find top-performing student
-  6. Search student
-  7. Remove student (by ID)
-  8. Run custom analysis (Academic Risk Index)
-  9. Display summary report
- 10. Exit
---------------------------------------------------------------
-Choose an option (1-10): 0
-[memory] internal state: count=9 capacity=16 (2304 bytes)
-
----------------------------- MENU ----------------------------
-  1. Add student
-  2. Display all students
-  3. Sort students
-  4. Calculate average grade
-  5. Find top-performing student
-  6. Search student
-  7. Remove student (by ID)
-  8. Run custom analysis (Academic Risk Index)
-  9. Display summary report
- 10. Exit
---------------------------------------------------------------
-Choose an option (1-10): 1
-Student ID (positive integer): 1013
-Student name: Mira Tanaka
-Course: Chemistry
-Grade (0-100): 71
-Added 'Mira Tanaka' (ID 1013, Chemistry, 71.0). Records: 10, capacity: 16
-
----------------------------- MENU ----------------------------
-  1. Add student
-  2. Display all students
-  3. Sort students
-  4. Calculate average grade
-  5. Find top-performing student
-  6. Search student
-  7. Remove student (by ID)
-  8. Run custom analysis (Academic Risk Index)
-  9. Display summary report
- 10. Exit
---------------------------------------------------------------
-Choose an option (1-10): 1
-Student ID (positive integer): 1014
-Student name: Otto Gruber
-Course: History
-Grade (0-100): 66
-Added 'Otto Gruber' (ID 1014, History, 66.0). Records: 11, capacity: 16
+[memory] internal state: count=15 capacity=16 (2304 bytes)
 
 ---------------------------- MENU ----------------------------
   1. Add student
@@ -778,81 +331,25 @@ Record not added (2 problems).
   9. Display summary report
  10. Exit
 --------------------------------------------------------------
-Choose an option (1-10): 1
-Student ID (positive integer): -5
-Student name: Bad Id
-Course: Nowhere
-Grade (0-100): 80
-Rejected: invalid ID '-5' (must be a positive integer).
-Record not added (1 problem).
-
----------------------------- MENU ----------------------------
-  1. Add student
-  2. Display all students
-  3. Sort students
-  4. Calculate average grade
-  5. Find top-performing student
-  6. Search student
-  7. Remove student (by ID)
-  8. Run custom analysis (Academic Risk Index)
-  9. Display summary report
- 10. Exit
---------------------------------------------------------------
-Choose an option (1-10): 1
-Student ID (positive integer): 1015
-Student name: 
-Course: NoCourse
-Grade (0-100): 50
-Rejected: name must not be empty.
-Record not added (1 problem).
-
----------------------------- MENU ----------------------------
-  1. Add student
-  2. Display all students
-  3. Sort students
-  4. Calculate average grade
-  5. Find top-performing student
-  6. Search student
-  7. Remove student (by ID)
-  8. Run custom analysis (Academic Risk Index)
-  9. Display summary report
- 10. Exit
---------------------------------------------------------------
-Choose an option (1-10): 1
-Student ID (positive integer): 1016
-Student name: No Name
-Course: 
-Grade (0-100): 50
-Rejected: course must not be empty.
-Record not added (1 problem).
-
----------------------------- MENU ----------------------------
-  1. Add student
-  2. Display all students
-  3. Sort students
-  4. Calculate average grade
-  5. Find top-performing student
-  6. Search student
-  7. Remove student (by ID)
-  8. Run custom analysis (Academic Risk Index)
-  9. Display summary report
- 10. Exit
---------------------------------------------------------------
 Choose an option (1-10): 2
     ID  Name                 Course                  Grade
 ------  -------------------- ---------------------- ------
+  1004  Daniel Petrov        Mathematics              61.0
+  1005  Emma Thompson        Physics                  58.0
+  1006  Farid Haddad         Programming in C         45.0
+  1007  Grace Kim            Mathematics              42.0
+  1008  Hugo Silva           Physics                  37.0
+  1009  Isabel Novak         Programming in C         30.0
+  1010  Jamal Wright         Mathematics              27.0
+  1011  Karla Mendes         Physics                  20.0
+  1012  Liam O'Brien         Programming in C         55.0
+  1013  Mira Tanaka          Chemistry                71.0
+  1014  Otto Gruber          History                  66.0
+  1015  Nina Petrova         History                  49.0
   1020  Zoe Adler            Biology                  90.0
   1021  Aaron Blake          Biology                  57.0
   1022  Carla Dias           Chemistry                64.0
-  1023  Dev Patel            Chemistry                38.0
-  1024  Elena Rossi          Biology                  76.0
-  1025  Farah Khan           Physics                  44.0
-  1026  Gustav Berg          Mathematics              88.0
-  1027  Hana Yusuf           Biology                  52.0
-  1028  Ivan Petrov          Physics                  29.0
-  1013  Mira Tanaka          Chemistry                71.0
-  1014  Otto Gruber          History                  66.0
-Total records: 11 (capacity 16)
+Total records: 15 (capacity 16)
 
 ---------------------------- MENU ----------------------------
   1. Add student
@@ -867,4 +364,4 @@ Total records: 11 (capacity 16)
  10. Exit
 --------------------------------------------------------------
 Choose an option (1-10): 10
-Exiting: freeing 11 record(s). Goodbye!
+Exiting: freeing 15 record(s). Goodbye!
