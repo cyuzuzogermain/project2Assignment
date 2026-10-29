@@ -1,0 +1,380 @@
+================================================================================
+sample_output.txt - verbatim output of the Dynamic IoT Event Monitoring and
+Callback Engine (main.c), generated 2026-10-29.
+
+Build : gcc -Wall -Wextra -std=c11 main.c -o main   (zero warnings, no output)
+Run   : ./main 2024 < sample_input.txt
+Seed  : 2024 (fixed, passed on the command line; the program prints it at start)
+
+Script : option 2 display devices -> 4 generate -> 5 process -> 8 auto-simulate
+         4 rounds (24 more readings) -> 6 display alerts -> 7 summary -> 0 exit.
+Result : 30 readings processed, 12 NORMAL / 18 ABNORMAL, 28 alert records,
+         every one of the four callbacks used, summary check "OK".
+================================================================================
++----------------------------------------------------------------+
+Student ID: 12345
+Project: Dynamic IoT Event Monitoring and Callback Engine
+Custom Callback: Sensor Drift Detector
++----------------------------------------------------------------+
+Seed: 2024
+  [memory] device array grew: capacity 4 -> 8
+Initialised with 6 devices (2 per type): count=6 capacity=8
+
+--- MENU ---------------------------------------------------------
+ 1) Register device
+ 2) Display devices
+ 3) Remove device by ID
+ 4) Generate readings
+ 5) Process readings
+ 6) Display alerts
+ 7) Summary
+ 8) Auto-simulate N rounds
+ 9) Set a reading manually (testing aid)
+ 0) Exit
+------------------------------------------------------------------
+Choice: 2
+> 2) Display devices
+Devices: count=6 capacity=8
+    ID  Name             Type         Status    Reading
+     1  temp-north       Temperature  NORMAL    (no reading yet)
+     2  temp-south       Temperature  NORMAL    (no reading yet)
+     3  press-line1      Pressure     NORMAL    (no reading yet)
+     4  press-line2      Pressure     NORMAL    (no reading yet)
+     5  batt-pack-a      Battery      NORMAL    (no reading yet)
+     6  batt-pack-b      Battery      NORMAL    (no reading yet)
+
+--- MENU ---------------------------------------------------------
+ 1) Register device
+ 2) Display devices
+ 3) Remove device by ID
+ 4) Generate readings
+ 5) Process readings
+ 6) Display alerts
+ 7) Summary
+ 8) Auto-simulate N rounds
+ 9) Set a reading manually (testing aid)
+ 0) Exit
+------------------------------------------------------------------
+Choice: 4
+> 4) Generate readings
+[generate] ID=1 name=temp-north type=Temperature -> 28.01 C
+[generate] ID=2 name=temp-south type=Temperature -> 50.46 C
+[generate] ID=3 name=press-line1 type=Pressure -> 116.00 kPa
+[generate] ID=4 name=press-line2 type=Pressure -> 80.00 kPa
+[generate] ID=5 name=batt-pack-a type=Battery -> 3.41 V
+[generate] ID=6 name=batt-pack-b type=Battery -> 4.36 V
+  Generated 6 reading(s).
+
+--- MENU ---------------------------------------------------------
+ 1) Register device
+ 2) Display devices
+ 3) Remove device by ID
+ 4) Generate readings
+ 5) Process readings
+ 6) Display alerts
+ 7) Summary
+ 8) Auto-simulate N rounds
+ 9) Set a reading manually (testing aid)
+ 0) Exit
+------------------------------------------------------------------
+Choice: 5
+> 5) Process readings
+[dispatch] table[0]=temperature_monitor table[1]=pressure_monitor table[2]=battery_monitor ; custom=sensor_drift_detector (via process_device)
+[process] ID=1 name=temp-north type=Temperature value=28.01 C -> NORMAL (temperature_monitor)
+[process] ID=2 name=temp-south type=Temperature value=50.46 C -> NORMAL (temperature_monitor)
+[process] ID=3 name=press-line1 type=Pressure value=116.00 kPa -> NORMAL (pressure_monitor)
+[process] ID=4 name=press-line2 type=Pressure value=80.00 kPa -> NORMAL (pressure_monitor)
+[process] ID=5 name=batt-pack-a type=Battery value=3.41 V -> NORMAL (battery_monitor)
+[process] ID=6 name=batt-pack-b type=Battery value=4.36 V -> ALERT (battery_monitor)
+  This pass: 6 reading(s) processed. Totals: processed=6 normal=5 abnormal=1
+
+--- MENU ---------------------------------------------------------
+ 1) Register device
+ 2) Display devices
+ 3) Remove device by ID
+ 4) Generate readings
+ 5) Process readings
+ 6) Display alerts
+ 7) Summary
+ 8) Auto-simulate N rounds
+ 9) Set a reading manually (testing aid)
+ 0) Exit
+------------------------------------------------------------------
+Choice: 8
+> 8) Auto-simulate N rounds
+  Number of rounds (1-1000): 4
+
+--- Auto-simulation round 1/4 ---------------------------------
+[generate] ID=1 name=temp-north type=Temperature -> 10.35 C
+[generate] ID=2 name=temp-south type=Temperature -> 1.79 C
+[generate] ID=3 name=press-line1 type=Pressure -> 93.00 kPa
+[generate] ID=4 name=press-line2 type=Pressure -> 129.00 kPa
+[generate] ID=5 name=batt-pack-a type=Battery -> 3.78 V
+[generate] ID=6 name=batt-pack-b type=Battery -> 2.85 V
+[process] ID=1 name=temp-north type=Temperature value=10.35 C -> ALERT (temperature_monitor)
+[process] ID=2 name=temp-south type=Temperature value=1.79 C -> ALERT (temperature_monitor, sensor_drift_detector)
+[process] ID=3 name=press-line1 type=Pressure value=93.00 kPa -> ALERT (sensor_drift_detector)
+[process] ID=4 name=press-line2 type=Pressure value=129.00 kPa -> ALERT (pressure_monitor, sensor_drift_detector)
+[process] ID=5 name=batt-pack-a type=Battery value=3.78 V -> NORMAL (battery_monitor)
+[process] ID=6 name=batt-pack-b type=Battery value=2.85 V -> ALERT (battery_monitor, sensor_drift_detector)
+[round 1] generated=6 processed=6 skipped=0 | totals processed=12 normal=6 abnormal=6 alerts=9 drift_checks=12 drift_alerts=4
+
+--- Auto-simulation round 2/4 ---------------------------------
+[generate] ID=1 name=temp-north type=Temperature -> 70.90 C
+[generate] ID=2 name=temp-south type=Temperature -> 75.14 C
+[generate] ID=3 name=press-line1 type=Pressure -> 125.00 kPa
+[generate] ID=4 name=press-line2 type=Pressure -> 81.00 kPa
+[generate] ID=5 name=batt-pack-a type=Battery -> 3.65 V
+[generate] ID=6 name=batt-pack-b type=Battery -> 3.28 V
+[process] ID=1 name=temp-north type=Temperature value=70.90 C -> ALERT (temperature_monitor, sensor_drift_detector)
+[process] ID=2 name=temp-south type=Temperature value=75.14 C -> ALERT (temperature_monitor, sensor_drift_detector)
+[process] ID=3 name=press-line1 type=Pressure value=125.00 kPa -> ALERT (pressure_monitor, sensor_drift_detector)
+[process] ID=4 name=press-line2 type=Pressure value=81.00 kPa -> ALERT (sensor_drift_detector)
+[process] ID=5 name=batt-pack-a type=Battery value=3.65 V -> NORMAL (battery_monitor)
+[process] ID=6 name=batt-pack-b type=Battery value=3.28 V -> ALERT (battery_monitor, sensor_drift_detector)
+[round 2] generated=6 processed=6 skipped=0 | totals processed=18 normal=7 abnormal=11 alerts=18 drift_checks=18 drift_alerts=9
+
+--- Auto-simulation round 3/4 ---------------------------------
+[generate] ID=1 name=temp-north type=Temperature -> 62.92 C
+[generate] ID=2 name=temp-south type=Temperature -> 56.48 C
+[generate] ID=3 name=press-line1 type=Pressure -> 91.00 kPa
+[generate] ID=4 name=press-line2 type=Pressure -> 74.00 kPa
+[generate] ID=5 name=batt-pack-a type=Battery -> 3.66 V
+[generate] ID=6 name=batt-pack-b type=Battery -> 2.85 V
+[process] ID=1 name=temp-north type=Temperature value=62.92 C -> NORMAL (temperature_monitor)
+[process] ID=2 name=temp-south type=Temperature value=56.48 C -> NORMAL (temperature_monitor)
+[process] ID=3 name=press-line1 type=Pressure value=91.00 kPa -> ALERT (sensor_drift_detector)
+[process] ID=4 name=press-line2 type=Pressure value=74.00 kPa -> ALERT (pressure_monitor)
+[process] ID=5 name=batt-pack-a type=Battery value=3.66 V -> NORMAL (battery_monitor)
+[process] ID=6 name=batt-pack-b type=Battery value=2.85 V -> ALERT (battery_monitor, sensor_drift_detector)
+[round 3] generated=6 processed=6 skipped=0 | totals processed=24 normal=10 abnormal=14 alerts=22 drift_checks=24 drift_alerts=11
+
+--- Auto-simulation round 4/4 ---------------------------------
+[generate] ID=1 name=temp-north type=Temperature -> 94.90 C
+[generate] ID=2 name=temp-south type=Temperature -> 16.67 C
+[generate] ID=3 name=press-line1 type=Pressure -> 85.00 kPa
+[generate] ID=4 name=press-line2 type=Pressure -> 63.00 kPa
+[generate] ID=5 name=batt-pack-a type=Battery -> 3.38 V
+[generate] ID=6 name=batt-pack-b type=Battery -> 3.97 V
+[process] ID=1 name=temp-north type=Temperature value=94.90 C -> ALERT (temperature_monitor, sensor_drift_detector)
+[process] ID=2 name=temp-south type=Temperature value=16.67 C -> ALERT (temperature_monitor, sensor_drift_detector)
+[process] ID=3 name=press-line1 type=Pressure value=85.00 kPa -> NORMAL (pressure_monitor)
+[process] ID=4 name=press-line2 type=Pressure value=63.00 kPa -> ALERT (pressure_monitor)
+[process] ID=5 name=batt-pack-a type=Battery value=3.38 V -> NORMAL (battery_monitor)
+[process] ID=6 name=batt-pack-b type=Battery value=3.97 V -> ALERT (sensor_drift_detector)
+[round 4] generated=6 processed=6 skipped=0 | totals processed=30 normal=12 abnormal=18 alerts=28 drift_checks=30 drift_alerts=14
+
+Auto-simulation finished: 4 round(s), 24 reading(s) processed in this run (7 normal, 17 abnormal).
+
+--- MENU ---------------------------------------------------------
+ 1) Register device
+ 2) Display devices
+ 3) Remove device by ID
+ 4) Generate readings
+ 5) Process readings
+ 6) Display alerts
+ 7) Summary
+ 8) Auto-simulate N rounds
+ 9) Set a reading manually (testing aid)
+ 0) Exit
+------------------------------------------------------------------
+Choice: 6
+> 6) Display alerts
+Alert log: 28 alert(s), capacity 32 (copies survive device removal)
+  #1  device 6 'batt-pack-b' (Battery)
+       value          : 4.36 V
+       expected range : normal range 3.30 to 4.20 V
+       reason         : voltage 4.36 V is above normal 4.20 V
+       callback       : battery_monitor
+  #2  device 1 'temp-north' (Temperature)
+       value          : 10.35 C
+       expected range : normal range 20.00 to 70.00 C
+       reason         : temperature 10.35 C is below normal 20.00 C
+       callback       : temperature_monitor
+  #3  device 2 'temp-south' (Temperature)
+       value          : 1.79 C
+       expected range : normal range 20.00 to 70.00 C
+       reason         : temperature 1.79 C is below normal 20.00 C
+       callback       : temperature_monitor
+  #4  device 2 'temp-south' (Temperature)
+       value          : 1.79 C
+       expected range : max change 22.00 C
+       reason         : drift delta 48.68 C exceeds limit 22.00 C (previous 50.46)
+       callback       : sensor_drift_detector
+  #5  device 3 'press-line1' (Pressure)
+       value          : 93.00 kPa
+       expected range : max change 16.00 kPa
+       reason         : drift delta 23.00 kPa exceeds limit 16.00 kPa (previous 116.00)
+       callback       : sensor_drift_detector
+  #6  device 4 'press-line2' (Pressure)
+       value          : 129.00 kPa
+       expected range : normal range 80.00 to 120.00 kPa
+       reason         : pressure 129.00 kPa is above normal 120.00 kPa
+       callback       : pressure_monitor
+  #7  device 4 'press-line2' (Pressure)
+       value          : 129.00 kPa
+       expected range : max change 16.00 kPa
+       reason         : drift delta 49.00 kPa exceeds limit 16.00 kPa (previous 80.00)
+       callback       : sensor_drift_detector
+  #8  device 6 'batt-pack-b' (Battery)
+       value          : 2.85 V
+       expected range : normal range 3.30 to 4.20 V
+       reason         : voltage 2.85 V is below normal 3.30 V
+       callback       : battery_monitor
+  #9  device 6 'batt-pack-b' (Battery)
+       value          : 2.85 V
+       expected range : max change 0.40 V
+       reason         : drift delta 1.51 V exceeds limit 0.40 V (previous 4.36)
+       callback       : sensor_drift_detector
+  #10  device 1 'temp-north' (Temperature)
+       value          : 70.90 C
+       expected range : normal range 20.00 to 70.00 C
+       reason         : temperature 70.90 C is above normal 70.00 C
+       callback       : temperature_monitor
+  #11  device 1 'temp-north' (Temperature)
+       value          : 70.90 C
+       expected range : max change 22.00 C
+       reason         : drift delta 60.54 C exceeds limit 22.00 C (previous 10.35)
+       callback       : sensor_drift_detector
+  #12  device 2 'temp-south' (Temperature)
+       value          : 75.14 C
+       expected range : normal range 20.00 to 70.00 C
+       reason         : temperature 75.14 C is above normal 70.00 C
+       callback       : temperature_monitor
+  #13  device 2 'temp-south' (Temperature)
+       value          : 75.14 C
+       expected range : max change 22.00 C
+       reason         : drift delta 73.35 C exceeds limit 22.00 C (previous 1.79)
+       callback       : sensor_drift_detector
+  #14  device 3 'press-line1' (Pressure)
+       value          : 125.00 kPa
+       expected range : normal range 80.00 to 120.00 kPa
+       reason         : pressure 125.00 kPa is above normal 120.00 kPa
+       callback       : pressure_monitor
+  #15  device 3 'press-line1' (Pressure)
+       value          : 125.00 kPa
+       expected range : max change 16.00 kPa
+       reason         : drift delta 32.00 kPa exceeds limit 16.00 kPa (previous 93.00)
+       callback       : sensor_drift_detector
+  #16  device 4 'press-line2' (Pressure)
+       value          : 81.00 kPa
+       expected range : max change 16.00 kPa
+       reason         : drift delta 48.00 kPa exceeds limit 16.00 kPa (previous 129.00)
+       callback       : sensor_drift_detector
+  #17  device 6 'batt-pack-b' (Battery)
+       value          : 3.28 V
+       expected range : normal range 3.30 to 4.20 V
+       reason         : voltage 3.28 V is below normal 3.30 V
+       callback       : battery_monitor
+  #18  device 6 'batt-pack-b' (Battery)
+       value          : 3.28 V
+       expected range : max change 0.40 V
+       reason         : drift delta 0.43 V exceeds limit 0.40 V (previous 2.85)
+       callback       : sensor_drift_detector
+  #19  device 3 'press-line1' (Pressure)
+       value          : 91.00 kPa
+       expected range : max change 16.00 kPa
+       reason         : drift delta 34.00 kPa exceeds limit 16.00 kPa (previous 125.00)
+       callback       : sensor_drift_detector
+  #20  device 4 'press-line2' (Pressure)
+       value          : 74.00 kPa
+       expected range : normal range 80.00 to 120.00 kPa
+       reason         : pressure 74.00 kPa is below normal 80.00 kPa
+       callback       : pressure_monitor
+  #21  device 6 'batt-pack-b' (Battery)
+       value          : 2.85 V
+       expected range : normal range 3.30 to 4.20 V
+       reason         : voltage 2.85 V is below normal 3.30 V
+       callback       : battery_monitor
+  #22  device 6 'batt-pack-b' (Battery)
+       value          : 2.85 V
+       expected range : max change 0.40 V
+       reason         : drift delta 0.43 V exceeds limit 0.40 V (previous 3.28)
+       callback       : sensor_drift_detector
+  #23  device 1 'temp-north' (Temperature)
+       value          : 94.90 C
+       expected range : normal range 20.00 to 70.00 C
+       reason         : temperature 94.90 C is above normal 70.00 C
+       callback       : temperature_monitor
+  #24  device 1 'temp-north' (Temperature)
+       value          : 94.90 C
+       expected range : max change 22.00 C
+       reason         : drift delta 31.97 C exceeds limit 22.00 C (previous 62.92)
+       callback       : sensor_drift_detector
+  #25  device 2 'temp-south' (Temperature)
+       value          : 16.67 C
+       expected range : normal range 20.00 to 70.00 C
+       reason         : temperature 16.67 C is below normal 20.00 C
+       callback       : temperature_monitor
+  #26  device 2 'temp-south' (Temperature)
+       value          : 16.67 C
+       expected range : max change 22.00 C
+       reason         : drift delta 39.82 C exceeds limit 22.00 C (previous 56.48)
+       callback       : sensor_drift_detector
+  #27  device 4 'press-line2' (Pressure)
+       value          : 63.00 kPa
+       expected range : normal range 80.00 to 120.00 kPa
+       reason         : pressure 63.00 kPa is below normal 80.00 kPa
+       callback       : pressure_monitor
+  #28  device 6 'batt-pack-b' (Battery)
+       value          : 3.97 V
+       expected range : max change 0.40 V
+       reason         : drift delta 1.12 V exceeds limit 0.40 V (previous 2.85)
+       callback       : sensor_drift_detector
+
+--- MENU ---------------------------------------------------------
+ 1) Register device
+ 2) Display devices
+ 3) Remove device by ID
+ 4) Generate readings
+ 5) Process readings
+ 6) Display alerts
+ 7) Summary
+ 8) Auto-simulate N rounds
+ 9) Set a reading manually (testing aid)
+ 0) Exit
+------------------------------------------------------------------
+Choice: 7
+> 7) Summary
++----------------------------------------------------------------+
+Student ID: 12345
+Project: Dynamic IoT Event Monitoring and Callback Engine
+Custom Callback: Sensor Drift Detector
++----------------------------------------------------------------+
+Ranges (configurable #defines):
+  Temperature: simulated -10 to 100 C, normal 20 to 70 C
+  Pressure   : simulated 60 to 140 kPa, normal 80 to 120 kPa
+  Battery    : simulated 2.5 to 4.5 V, normal 3.3 to 4.2 V
+  Drift limit: 20% of the simulated span -> temperature 22.00 C, pressure 16.00 kPa, battery 0.40 V
+
+  Seed used                       : 2024
+  Total registered devices        : 6
+  Readings processed              : 30
+  Normal readings                 : 12
+  Abnormal readings               : 18
+  Alerts per device type          : Temperature 11, Pressure 9, Battery 8
+  Alerts logged (total)           : 28
+  Drift checks                    : 30
+  Drift alerts                    : 14
+  Device array                    : count 6, capacity 8
+  Alert log array                 : count 28, capacity 32
+  Check: normal + abnormal        : 30 (processed 30 -> OK)
+
+--- MENU ---------------------------------------------------------
+ 1) Register device
+ 2) Display devices
+ 3) Remove device by ID
+ 4) Generate readings
+ 5) Process readings
+ 6) Display alerts
+ 7) Summary
+ 8) Auto-simulate N rounds
+ 9) Set a reading manually (testing aid)
+ 0) Exit
+------------------------------------------------------------------
+Choice: 0
+> 0) Exit
+Exiting the engine.
+
+Shutting down: freeing 6 device(s) and 28 alert record(s).
+Memory released. Goodbye.

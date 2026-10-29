@@ -1,0 +1,299 @@
+================================================================================
+callback_dispatch_evidence.txt
+
+Evidence that all three type callbacks AND the custom drift callback are reached
+through function pointers - no if/else or switch holds the monitoring logic:
+  * the type callback is chosen from the table TYPE_CALLBACKS[device->type],
+  * both callbacks are invoked through process_device(device, callback),
+  * every callback re-checks device->type and only then touches its own union
+    member, so no union member is ever read for the wrong type.
+
+Run : ./main 4242 < dispatch_input.txt      (seed 4242, fixed)
+
+Scenarios forced with option 9 (manual readings) before option 5 (process):
+  device 2   25.00 C   -> NORMAL reading, drift baseline stored
+  device 2   60.00 C   -> DRIFT-ONLY alert: both samples inside the normal
+                          20..70 C range, jump 35.00 > limit 22.00 C
+  device 1   85.00 C   -> temperature_monitor alert   (high temperature)
+  device 3  150.00 kPa -> pressure_monitor alert      (bad pressure)
+  device 5    2.90 V   -> battery_monitor alert       (low battery)
+  device 4  100.00 kPa -> NORMAL reading              (in-range pressure)
+  device 6    3.90 V   -> NORMAL reading              (in-range battery)
+================================================================================
++----------------------------------------------------------------+
+Student ID: 12345
+Project: Dynamic IoT Event Monitoring and Callback Engine
+Custom Callback: Sensor Drift Detector
++----------------------------------------------------------------+
+Seed: 4242
+  [memory] device array grew: capacity 4 -> 8
+Initialised with 6 devices (2 per type): count=6 capacity=8
+
+--- MENU ---------------------------------------------------------
+ 1) Register device
+ 2) Display devices
+ 3) Remove device by ID
+ 4) Generate readings
+ 5) Process readings
+ 6) Display alerts
+ 7) Summary
+ 8) Auto-simulate N rounds
+ 9) Set a reading manually (testing aid)
+ 0) Exit
+------------------------------------------------------------------
+Choice: 9
+> 9) Set a reading manually (testing aid)
+  Device ID: 2
+  Value for Temperature 'temp-south': 25.0
+  Set ID=2 temp-south type=Temperature -> 25.00 C (previous_value not set yet)
+  count=6 capacity=8
+
+--- MENU ---------------------------------------------------------
+ 1) Register device
+ 2) Display devices
+ 3) Remove device by ID
+ 4) Generate readings
+ 5) Process readings
+ 6) Display alerts
+ 7) Summary
+ 8) Auto-simulate N rounds
+ 9) Set a reading manually (testing aid)
+ 0) Exit
+------------------------------------------------------------------
+Choice: 5
+> 5) Process readings
+[dispatch] table[0]=temperature_monitor table[1]=pressure_monitor table[2]=battery_monitor ; custom=sensor_drift_detector (via process_device)
+[process] ID=2 name=temp-south type=Temperature value=25.00 C -> NORMAL (temperature_monitor)
+  Skipped 5 device(s) without a reading.
+  This pass: 1 reading(s) processed. Totals: processed=1 normal=1 abnormal=0
+
+--- MENU ---------------------------------------------------------
+ 1) Register device
+ 2) Display devices
+ 3) Remove device by ID
+ 4) Generate readings
+ 5) Process readings
+ 6) Display alerts
+ 7) Summary
+ 8) Auto-simulate N rounds
+ 9) Set a reading manually (testing aid)
+ 0) Exit
+------------------------------------------------------------------
+Choice: 9
+> 9) Set a reading manually (testing aid)
+  Device ID: 2
+  Value for Temperature 'temp-south': 60.0
+  Set ID=2 temp-south type=Temperature -> 60.00 C (previous_value kept)
+  count=6 capacity=8
+
+--- MENU ---------------------------------------------------------
+ 1) Register device
+ 2) Display devices
+ 3) Remove device by ID
+ 4) Generate readings
+ 5) Process readings
+ 6) Display alerts
+ 7) Summary
+ 8) Auto-simulate N rounds
+ 9) Set a reading manually (testing aid)
+ 0) Exit
+------------------------------------------------------------------
+Choice: 9
+> 9) Set a reading manually (testing aid)
+  Device ID: 1
+  Value for Temperature 'temp-north': 85.0
+  Set ID=1 temp-north type=Temperature -> 85.00 C (previous_value not set yet)
+  count=6 capacity=8
+
+--- MENU ---------------------------------------------------------
+ 1) Register device
+ 2) Display devices
+ 3) Remove device by ID
+ 4) Generate readings
+ 5) Process readings
+ 6) Display alerts
+ 7) Summary
+ 8) Auto-simulate N rounds
+ 9) Set a reading manually (testing aid)
+ 0) Exit
+------------------------------------------------------------------
+Choice: 9
+> 9) Set a reading manually (testing aid)
+  Device ID: 3
+  Value for Pressure 'press-line1': 150
+  Set ID=3 press-line1 type=Pressure -> 150.00 kPa (previous_value not set yet)
+  note: value is outside the simulated range 60.00 to 140.00 kPa
+  count=6 capacity=8
+
+--- MENU ---------------------------------------------------------
+ 1) Register device
+ 2) Display devices
+ 3) Remove device by ID
+ 4) Generate readings
+ 5) Process readings
+ 6) Display alerts
+ 7) Summary
+ 8) Auto-simulate N rounds
+ 9) Set a reading manually (testing aid)
+ 0) Exit
+------------------------------------------------------------------
+Choice: 9
+> 9) Set a reading manually (testing aid)
+  Device ID: 4
+  Value for Pressure 'press-line2': 100
+  Set ID=4 press-line2 type=Pressure -> 100.00 kPa (previous_value not set yet)
+  count=6 capacity=8
+
+--- MENU ---------------------------------------------------------
+ 1) Register device
+ 2) Display devices
+ 3) Remove device by ID
+ 4) Generate readings
+ 5) Process readings
+ 6) Display alerts
+ 7) Summary
+ 8) Auto-simulate N rounds
+ 9) Set a reading manually (testing aid)
+ 0) Exit
+------------------------------------------------------------------
+Choice: 9
+> 9) Set a reading manually (testing aid)
+  Device ID: 5
+  Value for Battery 'batt-pack-a': 2.9
+  Set ID=5 batt-pack-a type=Battery -> 2.90 V (previous_value not set yet)
+  count=6 capacity=8
+
+--- MENU ---------------------------------------------------------
+ 1) Register device
+ 2) Display devices
+ 3) Remove device by ID
+ 4) Generate readings
+ 5) Process readings
+ 6) Display alerts
+ 7) Summary
+ 8) Auto-simulate N rounds
+ 9) Set a reading manually (testing aid)
+ 0) Exit
+------------------------------------------------------------------
+Choice: 9
+> 9) Set a reading manually (testing aid)
+  Device ID: 6
+  Value for Battery 'batt-pack-b': 3.9
+  Set ID=6 batt-pack-b type=Battery -> 3.90 V (previous_value not set yet)
+  count=6 capacity=8
+
+--- MENU ---------------------------------------------------------
+ 1) Register device
+ 2) Display devices
+ 3) Remove device by ID
+ 4) Generate readings
+ 5) Process readings
+ 6) Display alerts
+ 7) Summary
+ 8) Auto-simulate N rounds
+ 9) Set a reading manually (testing aid)
+ 0) Exit
+------------------------------------------------------------------
+Choice: 5
+> 5) Process readings
+[dispatch] table[0]=temperature_monitor table[1]=pressure_monitor table[2]=battery_monitor ; custom=sensor_drift_detector (via process_device)
+[process] ID=1 name=temp-north type=Temperature value=85.00 C -> ALERT (temperature_monitor)
+[process] ID=2 name=temp-south type=Temperature value=60.00 C -> ALERT (sensor_drift_detector)
+[process] ID=3 name=press-line1 type=Pressure value=150.00 kPa -> ALERT (pressure_monitor)
+[process] ID=4 name=press-line2 type=Pressure value=100.00 kPa -> NORMAL (pressure_monitor)
+[process] ID=5 name=batt-pack-a type=Battery value=2.90 V -> ALERT (battery_monitor)
+[process] ID=6 name=batt-pack-b type=Battery value=3.90 V -> NORMAL (battery_monitor)
+  This pass: 6 reading(s) processed. Totals: processed=7 normal=3 abnormal=4
+
+--- MENU ---------------------------------------------------------
+ 1) Register device
+ 2) Display devices
+ 3) Remove device by ID
+ 4) Generate readings
+ 5) Process readings
+ 6) Display alerts
+ 7) Summary
+ 8) Auto-simulate N rounds
+ 9) Set a reading manually (testing aid)
+ 0) Exit
+------------------------------------------------------------------
+Choice: 6
+> 6) Display alerts
+Alert log: 4 alert(s), capacity 4 (copies survive device removal)
+  #1  device 1 'temp-north' (Temperature)
+       value          : 85.00 C
+       expected range : normal range 20.00 to 70.00 C
+       reason         : temperature 85.00 C is above normal 70.00 C
+       callback       : temperature_monitor
+  #2  device 2 'temp-south' (Temperature)
+       value          : 60.00 C
+       expected range : max change 22.00 C
+       reason         : drift delta 35.00 C exceeds limit 22.00 C (previous 25.00)
+       callback       : sensor_drift_detector
+  #3  device 3 'press-line1' (Pressure)
+       value          : 150.00 kPa
+       expected range : normal range 80.00 to 120.00 kPa
+       reason         : pressure 150.00 kPa is above normal 120.00 kPa
+       callback       : pressure_monitor
+  #4  device 5 'batt-pack-a' (Battery)
+       value          : 2.90 V
+       expected range : normal range 3.30 to 4.20 V
+       reason         : voltage 2.90 V is below normal 3.30 V
+       callback       : battery_monitor
+
+--- MENU ---------------------------------------------------------
+ 1) Register device
+ 2) Display devices
+ 3) Remove device by ID
+ 4) Generate readings
+ 5) Process readings
+ 6) Display alerts
+ 7) Summary
+ 8) Auto-simulate N rounds
+ 9) Set a reading manually (testing aid)
+ 0) Exit
+------------------------------------------------------------------
+Choice: 7
+> 7) Summary
++----------------------------------------------------------------+
+Student ID: 12345
+Project: Dynamic IoT Event Monitoring and Callback Engine
+Custom Callback: Sensor Drift Detector
++----------------------------------------------------------------+
+Ranges (configurable #defines):
+  Temperature: simulated -10 to 100 C, normal 20 to 70 C
+  Pressure   : simulated 60 to 140 kPa, normal 80 to 120 kPa
+  Battery    : simulated 2.5 to 4.5 V, normal 3.3 to 4.2 V
+  Drift limit: 20% of the simulated span -> temperature 22.00 C, pressure 16.00 kPa, battery 0.40 V
+
+  Seed used                       : 4242
+  Total registered devices        : 6
+  Readings processed              : 7
+  Normal readings                 : 3
+  Abnormal readings               : 4
+  Alerts per device type          : Temperature 2, Pressure 1, Battery 1
+  Alerts logged (total)           : 4
+  Drift checks                    : 7
+  Drift alerts                    : 1
+  Device array                    : count 6, capacity 8
+  Alert log array                 : count 4, capacity 4
+  Check: normal + abnormal        : 7 (processed 7 -> OK)
+
+--- MENU ---------------------------------------------------------
+ 1) Register device
+ 2) Display devices
+ 3) Remove device by ID
+ 4) Generate readings
+ 5) Process readings
+ 6) Display alerts
+ 7) Summary
+ 8) Auto-simulate N rounds
+ 9) Set a reading manually (testing aid)
+ 0) Exit
+------------------------------------------------------------------
+Choice: 0
+> 0) Exit
+Exiting the engine.
+
+Shutting down: freeing 6 device(s) and 4 alert record(s).
+Memory released. Goodbye.

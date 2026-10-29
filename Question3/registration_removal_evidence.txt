@@ -1,0 +1,828 @@
+================================================================================
+registration_removal_evidence.txt
+
+Evidence for registration and removal:
+  * count and capacity printed before and after every register/remove operation,
+  * growth 4 -> 8 -> 16 through realloc (temporary pointer, checked),
+  * shrinking 16 -> 8 -> 4 once count < capacity/4, never below 4,
+  * rejected cases: duplicate ID, empty name, invalid type (4), non-numeric ID,
+    zero/negative ID, unknown ID on remove, unknown ID on manual reading,
+  * every menu option exercised against ZERO devices, then re-registration,
+  * the alert log stores copies, so alerts of removed devices still display,
+  * summary counters never decrease when devices are removed.
+
+Run : ./main 777 < registrations_input.txt    (seed 777, fixed)
+================================================================================
++----------------------------------------------------------------+
+Student ID: 12345
+Project: Dynamic IoT Event Monitoring and Callback Engine
+Custom Callback: Sensor Drift Detector
++----------------------------------------------------------------+
+Seed: 777
+  [memory] device array grew: capacity 4 -> 8
+Initialised with 6 devices (2 per type): count=6 capacity=8
+
+--- MENU ---------------------------------------------------------
+ 1) Register device
+ 2) Display devices
+ 3) Remove device by ID
+ 4) Generate readings
+ 5) Process readings
+ 6) Display alerts
+ 7) Summary
+ 8) Auto-simulate N rounds
+ 9) Set a reading manually (testing aid)
+ 0) Exit
+------------------------------------------------------------------
+Choice: 2
+> 2) Display devices
+Devices: count=6 capacity=8
+    ID  Name             Type         Status    Reading
+     1  temp-north       Temperature  NORMAL    (no reading yet)
+     2  temp-south       Temperature  NORMAL    (no reading yet)
+     3  press-line1      Pressure     NORMAL    (no reading yet)
+     4  press-line2      Pressure     NORMAL    (no reading yet)
+     5  batt-pack-a      Battery      NORMAL    (no reading yet)
+     6  batt-pack-b      Battery      NORMAL    (no reading yet)
+
+--- MENU ---------------------------------------------------------
+ 1) Register device
+ 2) Display devices
+ 3) Remove device by ID
+ 4) Generate readings
+ 5) Process readings
+ 6) Display alerts
+ 7) Summary
+ 8) Auto-simulate N rounds
+ 9) Set a reading manually (testing aid)
+ 0) Exit
+------------------------------------------------------------------
+Choice: 1
+> 1) Register device
+  ID (positive integer): 99
+  Name (non-empty): temp-west
+  Type (1=Temperature, 2=Pressure, 3=Battery): 1
+  Registered device 99 'temp-west' (Temperature).
+  count=7 capacity=8
+
+--- MENU ---------------------------------------------------------
+ 1) Register device
+ 2) Display devices
+ 3) Remove device by ID
+ 4) Generate readings
+ 5) Process readings
+ 6) Display alerts
+ 7) Summary
+ 8) Auto-simulate N rounds
+ 9) Set a reading manually (testing aid)
+ 0) Exit
+------------------------------------------------------------------
+Choice: 1
+> 1) Register device
+  ID (positive integer): 99
+  Name (non-empty): dup-name
+  Type (1=Temperature, 2=Pressure, 3=Battery): 1
+  ERROR: duplicate ID 99, device already registered.
+
+--- MENU ---------------------------------------------------------
+ 1) Register device
+ 2) Display devices
+ 3) Remove device by ID
+ 4) Generate readings
+ 5) Process readings
+ 6) Display alerts
+ 7) Summary
+ 8) Auto-simulate N rounds
+ 9) Set a reading manually (testing aid)
+ 0) Exit
+------------------------------------------------------------------
+Choice: 1
+> 1) Register device
+  ID (positive integer): 100
+  Name (non-empty): 
+  Type (1=Temperature, 2=Pressure, 3=Battery): 1
+  ERROR: name must not be empty.
+
+--- MENU ---------------------------------------------------------
+ 1) Register device
+ 2) Display devices
+ 3) Remove device by ID
+ 4) Generate readings
+ 5) Process readings
+ 6) Display alerts
+ 7) Summary
+ 8) Auto-simulate N rounds
+ 9) Set a reading manually (testing aid)
+ 0) Exit
+------------------------------------------------------------------
+Choice: 1
+> 1) Register device
+  ID (positive integer): 101
+  Name (non-empty): bad-type
+  Type (1=Temperature, 2=Pressure, 3=Battery): 4
+  ERROR: type must be 1, 2 or 3 (got '4').
+
+--- MENU ---------------------------------------------------------
+ 1) Register device
+ 2) Display devices
+ 3) Remove device by ID
+ 4) Generate readings
+ 5) Process readings
+ 6) Display alerts
+ 7) Summary
+ 8) Auto-simulate N rounds
+ 9) Set a reading manually (testing aid)
+ 0) Exit
+------------------------------------------------------------------
+Choice: 1
+> 1) Register device
+  ID (positive integer): abc
+  Name (non-empty): nope
+  Type (1=Temperature, 2=Pressure, 3=Battery): 1
+  ERROR: ID must be a positive integer (got 'abc').
+
+--- MENU ---------------------------------------------------------
+ 1) Register device
+ 2) Display devices
+ 3) Remove device by ID
+ 4) Generate readings
+ 5) Process readings
+ 6) Display alerts
+ 7) Summary
+ 8) Auto-simulate N rounds
+ 9) Set a reading manually (testing aid)
+ 0) Exit
+------------------------------------------------------------------
+Choice: 1
+> 1) Register device
+  ID (positive integer): 102
+  Name (non-empty): press-west
+  Type (1=Temperature, 2=Pressure, 3=Battery): 2
+  Registered device 102 'press-west' (Pressure).
+  count=8 capacity=8
+
+--- MENU ---------------------------------------------------------
+ 1) Register device
+ 2) Display devices
+ 3) Remove device by ID
+ 4) Generate readings
+ 5) Process readings
+ 6) Display alerts
+ 7) Summary
+ 8) Auto-simulate N rounds
+ 9) Set a reading manually (testing aid)
+ 0) Exit
+------------------------------------------------------------------
+Choice: 1
+> 1) Register device
+  ID (positive integer): 103
+  Name (non-empty): batt-west
+  Type (1=Temperature, 2=Pressure, 3=Battery): 3
+  [memory] device array grew: capacity 8 -> 16
+  Registered device 103 'batt-west' (Battery).
+  count=9 capacity=16
+
+--- MENU ---------------------------------------------------------
+ 1) Register device
+ 2) Display devices
+ 3) Remove device by ID
+ 4) Generate readings
+ 5) Process readings
+ 6) Display alerts
+ 7) Summary
+ 8) Auto-simulate N rounds
+ 9) Set a reading manually (testing aid)
+ 0) Exit
+------------------------------------------------------------------
+Choice: 1
+> 1) Register device
+  ID (positive integer): 104
+  Name (non-empty): temp-east
+  Type (1=Temperature, 2=Pressure, 3=Battery): 1
+  Registered device 104 'temp-east' (Temperature).
+  count=10 capacity=16
+
+--- MENU ---------------------------------------------------------
+ 1) Register device
+ 2) Display devices
+ 3) Remove device by ID
+ 4) Generate readings
+ 5) Process readings
+ 6) Display alerts
+ 7) Summary
+ 8) Auto-simulate N rounds
+ 9) Set a reading manually (testing aid)
+ 0) Exit
+------------------------------------------------------------------
+Choice: 1
+> 1) Register device
+  ID (positive integer): 105
+  Name (non-empty): press-east
+  Type (1=Temperature, 2=Pressure, 3=Battery): 2
+  Registered device 105 'press-east' (Pressure).
+  count=11 capacity=16
+
+--- MENU ---------------------------------------------------------
+ 1) Register device
+ 2) Display devices
+ 3) Remove device by ID
+ 4) Generate readings
+ 5) Process readings
+ 6) Display alerts
+ 7) Summary
+ 8) Auto-simulate N rounds
+ 9) Set a reading manually (testing aid)
+ 0) Exit
+------------------------------------------------------------------
+Choice: 1
+> 1) Register device
+  ID (positive integer): 106
+  Name (non-empty): batt-east
+  Type (1=Temperature, 2=Pressure, 3=Battery): 3
+  Registered device 106 'batt-east' (Battery).
+  count=12 capacity=16
+
+--- MENU ---------------------------------------------------------
+ 1) Register device
+ 2) Display devices
+ 3) Remove device by ID
+ 4) Generate readings
+ 5) Process readings
+ 6) Display alerts
+ 7) Summary
+ 8) Auto-simulate N rounds
+ 9) Set a reading manually (testing aid)
+ 0) Exit
+------------------------------------------------------------------
+Choice: 4
+> 4) Generate readings
+[generate] ID=1 name=temp-north type=Temperature -> 38.53 C
+[generate] ID=2 name=temp-south type=Temperature -> 93.13 C
+[generate] ID=3 name=press-line1 type=Pressure -> 113.00 kPa
+[generate] ID=4 name=press-line2 type=Pressure -> 118.00 kPa
+[generate] ID=5 name=batt-pack-a type=Battery -> 2.93 V
+[generate] ID=6 name=batt-pack-b type=Battery -> 3.60 V
+[generate] ID=99 name=temp-west type=Temperature -> 98.32 C
+[generate] ID=102 name=press-west type=Pressure -> 85.00 kPa
+[generate] ID=103 name=batt-west type=Battery -> 4.17 V
+[generate] ID=104 name=temp-east type=Temperature -> 73.36 C
+[generate] ID=105 name=press-east type=Pressure -> 88.00 kPa
+[generate] ID=106 name=batt-east type=Battery -> 4.02 V
+  Generated 12 reading(s).
+
+--- MENU ---------------------------------------------------------
+ 1) Register device
+ 2) Display devices
+ 3) Remove device by ID
+ 4) Generate readings
+ 5) Process readings
+ 6) Display alerts
+ 7) Summary
+ 8) Auto-simulate N rounds
+ 9) Set a reading manually (testing aid)
+ 0) Exit
+------------------------------------------------------------------
+Choice: 5
+> 5) Process readings
+[dispatch] table[0]=temperature_monitor table[1]=pressure_monitor table[2]=battery_monitor ; custom=sensor_drift_detector (via process_device)
+[process] ID=1 name=temp-north type=Temperature value=38.53 C -> NORMAL (temperature_monitor)
+[process] ID=2 name=temp-south type=Temperature value=93.13 C -> ALERT (temperature_monitor)
+[process] ID=3 name=press-line1 type=Pressure value=113.00 kPa -> NORMAL (pressure_monitor)
+[process] ID=4 name=press-line2 type=Pressure value=118.00 kPa -> NORMAL (pressure_monitor)
+[process] ID=5 name=batt-pack-a type=Battery value=2.93 V -> ALERT (battery_monitor)
+[process] ID=6 name=batt-pack-b type=Battery value=3.60 V -> NORMAL (battery_monitor)
+[process] ID=99 name=temp-west type=Temperature value=98.32 C -> ALERT (temperature_monitor)
+[process] ID=102 name=press-west type=Pressure value=85.00 kPa -> NORMAL (pressure_monitor)
+[process] ID=103 name=batt-west type=Battery value=4.17 V -> NORMAL (battery_monitor)
+[process] ID=104 name=temp-east type=Temperature value=73.36 C -> ALERT (temperature_monitor)
+[process] ID=105 name=press-east type=Pressure value=88.00 kPa -> NORMAL (pressure_monitor)
+[process] ID=106 name=batt-east type=Battery value=4.02 V -> NORMAL (battery_monitor)
+  This pass: 12 reading(s) processed. Totals: processed=12 normal=8 abnormal=4
+
+--- MENU ---------------------------------------------------------
+ 1) Register device
+ 2) Display devices
+ 3) Remove device by ID
+ 4) Generate readings
+ 5) Process readings
+ 6) Display alerts
+ 7) Summary
+ 8) Auto-simulate N rounds
+ 9) Set a reading manually (testing aid)
+ 0) Exit
+------------------------------------------------------------------
+Choice: 3
+> 3) Remove device by ID
+  ID to remove: 999
+  ERROR: no device with ID 999.
+  count=12 capacity=16
+
+--- MENU ---------------------------------------------------------
+ 1) Register device
+ 2) Display devices
+ 3) Remove device by ID
+ 4) Generate readings
+ 5) Process readings
+ 6) Display alerts
+ 7) Summary
+ 8) Auto-simulate N rounds
+ 9) Set a reading manually (testing aid)
+ 0) Exit
+------------------------------------------------------------------
+Choice: 3
+> 3) Remove device by ID
+  ID to remove: 99
+  Removed device 99 'temp-west' (Temperature).
+  count=11 capacity=16
+
+--- MENU ---------------------------------------------------------
+ 1) Register device
+ 2) Display devices
+ 3) Remove device by ID
+ 4) Generate readings
+ 5) Process readings
+ 6) Display alerts
+ 7) Summary
+ 8) Auto-simulate N rounds
+ 9) Set a reading manually (testing aid)
+ 0) Exit
+------------------------------------------------------------------
+Choice: 3
+> 3) Remove device by ID
+  ID to remove: 102
+  Removed device 102 'press-west' (Pressure).
+  count=10 capacity=16
+
+--- MENU ---------------------------------------------------------
+ 1) Register device
+ 2) Display devices
+ 3) Remove device by ID
+ 4) Generate readings
+ 5) Process readings
+ 6) Display alerts
+ 7) Summary
+ 8) Auto-simulate N rounds
+ 9) Set a reading manually (testing aid)
+ 0) Exit
+------------------------------------------------------------------
+Choice: 3
+> 3) Remove device by ID
+  ID to remove: 103
+  Removed device 103 'batt-west' (Battery).
+  count=9 capacity=16
+
+--- MENU ---------------------------------------------------------
+ 1) Register device
+ 2) Display devices
+ 3) Remove device by ID
+ 4) Generate readings
+ 5) Process readings
+ 6) Display alerts
+ 7) Summary
+ 8) Auto-simulate N rounds
+ 9) Set a reading manually (testing aid)
+ 0) Exit
+------------------------------------------------------------------
+Choice: 3
+> 3) Remove device by ID
+  ID to remove: 104
+  Removed device 104 'temp-east' (Temperature).
+  count=8 capacity=16
+
+--- MENU ---------------------------------------------------------
+ 1) Register device
+ 2) Display devices
+ 3) Remove device by ID
+ 4) Generate readings
+ 5) Process readings
+ 6) Display alerts
+ 7) Summary
+ 8) Auto-simulate N rounds
+ 9) Set a reading manually (testing aid)
+ 0) Exit
+------------------------------------------------------------------
+Choice: 3
+> 3) Remove device by ID
+  ID to remove: 105
+  Removed device 105 'press-east' (Pressure).
+  count=7 capacity=16
+
+--- MENU ---------------------------------------------------------
+ 1) Register device
+ 2) Display devices
+ 3) Remove device by ID
+ 4) Generate readings
+ 5) Process readings
+ 6) Display alerts
+ 7) Summary
+ 8) Auto-simulate N rounds
+ 9) Set a reading manually (testing aid)
+ 0) Exit
+------------------------------------------------------------------
+Choice: 3
+> 3) Remove device by ID
+  ID to remove: 106
+  Removed device 106 'batt-east' (Battery).
+  count=6 capacity=16
+
+--- MENU ---------------------------------------------------------
+ 1) Register device
+ 2) Display devices
+ 3) Remove device by ID
+ 4) Generate readings
+ 5) Process readings
+ 6) Display alerts
+ 7) Summary
+ 8) Auto-simulate N rounds
+ 9) Set a reading manually (testing aid)
+ 0) Exit
+------------------------------------------------------------------
+Choice: 3
+> 3) Remove device by ID
+  ID to remove: 1
+  Removed device 1 'temp-north' (Temperature).
+  count=5 capacity=16
+
+--- MENU ---------------------------------------------------------
+ 1) Register device
+ 2) Display devices
+ 3) Remove device by ID
+ 4) Generate readings
+ 5) Process readings
+ 6) Display alerts
+ 7) Summary
+ 8) Auto-simulate N rounds
+ 9) Set a reading manually (testing aid)
+ 0) Exit
+------------------------------------------------------------------
+Choice: 3
+> 3) Remove device by ID
+  ID to remove: 2
+  Removed device 2 'temp-south' (Temperature).
+  count=4 capacity=16
+
+--- MENU ---------------------------------------------------------
+ 1) Register device
+ 2) Display devices
+ 3) Remove device by ID
+ 4) Generate readings
+ 5) Process readings
+ 6) Display alerts
+ 7) Summary
+ 8) Auto-simulate N rounds
+ 9) Set a reading manually (testing aid)
+ 0) Exit
+------------------------------------------------------------------
+Choice: 3
+> 3) Remove device by ID
+  ID to remove: 3
+  Removed device 3 'press-line1' (Pressure).
+  [memory] device array shrank: capacity 16 -> 8
+  count=3 capacity=8
+
+--- MENU ---------------------------------------------------------
+ 1) Register device
+ 2) Display devices
+ 3) Remove device by ID
+ 4) Generate readings
+ 5) Process readings
+ 6) Display alerts
+ 7) Summary
+ 8) Auto-simulate N rounds
+ 9) Set a reading manually (testing aid)
+ 0) Exit
+------------------------------------------------------------------
+Choice: 3
+> 3) Remove device by ID
+  ID to remove: 4
+  Removed device 4 'press-line2' (Pressure).
+  count=2 capacity=8
+
+--- MENU ---------------------------------------------------------
+ 1) Register device
+ 2) Display devices
+ 3) Remove device by ID
+ 4) Generate readings
+ 5) Process readings
+ 6) Display alerts
+ 7) Summary
+ 8) Auto-simulate N rounds
+ 9) Set a reading manually (testing aid)
+ 0) Exit
+------------------------------------------------------------------
+Choice: 3
+> 3) Remove device by ID
+  ID to remove: 5
+  Removed device 5 'batt-pack-a' (Battery).
+  [memory] device array shrank: capacity 8 -> 4
+  count=1 capacity=4
+
+--- MENU ---------------------------------------------------------
+ 1) Register device
+ 2) Display devices
+ 3) Remove device by ID
+ 4) Generate readings
+ 5) Process readings
+ 6) Display alerts
+ 7) Summary
+ 8) Auto-simulate N rounds
+ 9) Set a reading manually (testing aid)
+ 0) Exit
+------------------------------------------------------------------
+Choice: 3
+> 3) Remove device by ID
+  ID to remove: 6
+  Removed device 6 'batt-pack-b' (Battery).
+  count=0 capacity=4
+
+--- MENU ---------------------------------------------------------
+ 1) Register device
+ 2) Display devices
+ 3) Remove device by ID
+ 4) Generate readings
+ 5) Process readings
+ 6) Display alerts
+ 7) Summary
+ 8) Auto-simulate N rounds
+ 9) Set a reading manually (testing aid)
+ 0) Exit
+------------------------------------------------------------------
+Choice: 2
+> 2) Display devices
+Devices: count=0 capacity=4
+  (no devices registered)
+
+--- MENU ---------------------------------------------------------
+ 1) Register device
+ 2) Display devices
+ 3) Remove device by ID
+ 4) Generate readings
+ 5) Process readings
+ 6) Display alerts
+ 7) Summary
+ 8) Auto-simulate N rounds
+ 9) Set a reading manually (testing aid)
+ 0) Exit
+------------------------------------------------------------------
+Choice: 4
+> 4) Generate readings
+  No devices registered, nothing to generate.
+
+--- MENU ---------------------------------------------------------
+ 1) Register device
+ 2) Display devices
+ 3) Remove device by ID
+ 4) Generate readings
+ 5) Process readings
+ 6) Display alerts
+ 7) Summary
+ 8) Auto-simulate N rounds
+ 9) Set a reading manually (testing aid)
+ 0) Exit
+------------------------------------------------------------------
+Choice: 5
+> 5) Process readings
+[dispatch] table[0]=temperature_monitor table[1]=pressure_monitor table[2]=battery_monitor ; custom=sensor_drift_detector (via process_device)
+  No devices registered, nothing to process.
+
+--- MENU ---------------------------------------------------------
+ 1) Register device
+ 2) Display devices
+ 3) Remove device by ID
+ 4) Generate readings
+ 5) Process readings
+ 6) Display alerts
+ 7) Summary
+ 8) Auto-simulate N rounds
+ 9) Set a reading manually (testing aid)
+ 0) Exit
+------------------------------------------------------------------
+Choice: 6
+> 6) Display alerts
+Alert log: 4 alert(s), capacity 4 (copies survive device removal)
+  #1  device 2 'temp-south' (Temperature)
+       value          : 93.13 C
+       expected range : normal range 20.00 to 70.00 C
+       reason         : temperature 93.13 C is above normal 70.00 C
+       callback       : temperature_monitor
+  #2  device 5 'batt-pack-a' (Battery)
+       value          : 2.93 V
+       expected range : normal range 3.30 to 4.20 V
+       reason         : voltage 2.93 V is below normal 3.30 V
+       callback       : battery_monitor
+  #3  device 99 'temp-west' (Temperature)
+       value          : 98.32 C
+       expected range : normal range 20.00 to 70.00 C
+       reason         : temperature 98.32 C is above normal 70.00 C
+       callback       : temperature_monitor
+  #4  device 104 'temp-east' (Temperature)
+       value          : 73.36 C
+       expected range : normal range 20.00 to 70.00 C
+       reason         : temperature 73.36 C is above normal 70.00 C
+       callback       : temperature_monitor
+
+--- MENU ---------------------------------------------------------
+ 1) Register device
+ 2) Display devices
+ 3) Remove device by ID
+ 4) Generate readings
+ 5) Process readings
+ 6) Display alerts
+ 7) Summary
+ 8) Auto-simulate N rounds
+ 9) Set a reading manually (testing aid)
+ 0) Exit
+------------------------------------------------------------------
+Choice: 7
+> 7) Summary
++----------------------------------------------------------------+
+Student ID: 12345
+Project: Dynamic IoT Event Monitoring and Callback Engine
+Custom Callback: Sensor Drift Detector
++----------------------------------------------------------------+
+Ranges (configurable #defines):
+  Temperature: simulated -10 to 100 C, normal 20 to 70 C
+  Pressure   : simulated 60 to 140 kPa, normal 80 to 120 kPa
+  Battery    : simulated 2.5 to 4.5 V, normal 3.3 to 4.2 V
+  Drift limit: 20% of the simulated span -> temperature 22.00 C, pressure 16.00 kPa, battery 0.40 V
+
+  Seed used                       : 777
+  Total registered devices        : 0
+  Readings processed              : 12
+  Normal readings                 : 8
+  Abnormal readings               : 4
+  Alerts per device type          : Temperature 3, Pressure 0, Battery 1
+  Alerts logged (total)           : 4
+  Drift checks                    : 12
+  Drift alerts                    : 0
+  Device array                    : count 0, capacity 4
+  Alert log array                 : count 4, capacity 4
+  Check: normal + abnormal        : 12 (processed 12 -> OK)
+
+--- MENU ---------------------------------------------------------
+ 1) Register device
+ 2) Display devices
+ 3) Remove device by ID
+ 4) Generate readings
+ 5) Process readings
+ 6) Display alerts
+ 7) Summary
+ 8) Auto-simulate N rounds
+ 9) Set a reading manually (testing aid)
+ 0) Exit
+------------------------------------------------------------------
+Choice: 8
+> 8) Auto-simulate N rounds
+  Number of rounds (1-1000): 1
+  No devices registered, nothing to simulate.
+
+--- MENU ---------------------------------------------------------
+ 1) Register device
+ 2) Display devices
+ 3) Remove device by ID
+ 4) Generate readings
+ 5) Process readings
+ 6) Display alerts
+ 7) Summary
+ 8) Auto-simulate N rounds
+ 9) Set a reading manually (testing aid)
+ 0) Exit
+------------------------------------------------------------------
+Choice: 9
+> 9) Set a reading manually (testing aid)
+  Device ID: 1
+  ERROR: no device with ID 1.
+
+--- MENU ---------------------------------------------------------
+ 1) Register device
+ 2) Display devices
+ 3) Remove device by ID
+ 4) Generate readings
+ 5) Process readings
+ 6) Display alerts
+ 7) Summary
+ 8) Auto-simulate N rounds
+ 9) Set a reading manually (testing aid)
+ 0) Exit
+------------------------------------------------------------------
+Choice: 3
+> 3) Remove device by ID
+  ID to remove: 1
+  ERROR: no device with ID 1.
+  count=0 capacity=4
+
+--- MENU ---------------------------------------------------------
+ 1) Register device
+ 2) Display devices
+ 3) Remove device by ID
+ 4) Generate readings
+ 5) Process readings
+ 6) Display alerts
+ 7) Summary
+ 8) Auto-simulate N rounds
+ 9) Set a reading manually (testing aid)
+ 0) Exit
+------------------------------------------------------------------
+Choice: 1
+> 1) Register device
+  ID (positive integer): 1
+  Name (non-empty): temp-new
+  Type (1=Temperature, 2=Pressure, 3=Battery): 1
+  Registered device 1 'temp-new' (Temperature).
+  count=1 capacity=4
+
+--- MENU ---------------------------------------------------------
+ 1) Register device
+ 2) Display devices
+ 3) Remove device by ID
+ 4) Generate readings
+ 5) Process readings
+ 6) Display alerts
+ 7) Summary
+ 8) Auto-simulate N rounds
+ 9) Set a reading manually (testing aid)
+ 0) Exit
+------------------------------------------------------------------
+Choice: 1
+> 1) Register device
+  ID (positive integer): 2
+  Name (non-empty): batt-new
+  Type (1=Temperature, 2=Pressure, 3=Battery): 3
+  Registered device 2 'batt-new' (Battery).
+  count=2 capacity=4
+
+--- MENU ---------------------------------------------------------
+ 1) Register device
+ 2) Display devices
+ 3) Remove device by ID
+ 4) Generate readings
+ 5) Process readings
+ 6) Display alerts
+ 7) Summary
+ 8) Auto-simulate N rounds
+ 9) Set a reading manually (testing aid)
+ 0) Exit
+------------------------------------------------------------------
+Choice: 2
+> 2) Display devices
+Devices: count=2 capacity=4
+    ID  Name             Type         Status    Reading
+     1  temp-new         Temperature  NORMAL    (no reading yet)
+     2  batt-new         Battery      NORMAL    (no reading yet)
+
+--- MENU ---------------------------------------------------------
+ 1) Register device
+ 2) Display devices
+ 3) Remove device by ID
+ 4) Generate readings
+ 5) Process readings
+ 6) Display alerts
+ 7) Summary
+ 8) Auto-simulate N rounds
+ 9) Set a reading manually (testing aid)
+ 0) Exit
+------------------------------------------------------------------
+Choice: 7
+> 7) Summary
++----------------------------------------------------------------+
+Student ID: 12345
+Project: Dynamic IoT Event Monitoring and Callback Engine
+Custom Callback: Sensor Drift Detector
++----------------------------------------------------------------+
+Ranges (configurable #defines):
+  Temperature: simulated -10 to 100 C, normal 20 to 70 C
+  Pressure   : simulated 60 to 140 kPa, normal 80 to 120 kPa
+  Battery    : simulated 2.5 to 4.5 V, normal 3.3 to 4.2 V
+  Drift limit: 20% of the simulated span -> temperature 22.00 C, pressure 16.00 kPa, battery 0.40 V
+
+  Seed used                       : 777
+  Total registered devices        : 2
+  Readings processed              : 12
+  Normal readings                 : 8
+  Abnormal readings               : 4
+  Alerts per device type          : Temperature 3, Pressure 0, Battery 1
+  Alerts logged (total)           : 4
+  Drift checks                    : 12
+  Drift alerts                    : 0
+  Device array                    : count 2, capacity 4
+  Alert log array                 : count 4, capacity 4
+  Check: normal + abnormal        : 12 (processed 12 -> OK)
+
+--- MENU ---------------------------------------------------------
+ 1) Register device
+ 2) Display devices
+ 3) Remove device by ID
+ 4) Generate readings
+ 5) Process readings
+ 6) Display alerts
+ 7) Summary
+ 8) Auto-simulate N rounds
+ 9) Set a reading manually (testing aid)
+ 0) Exit
+------------------------------------------------------------------
+Choice: 0
+> 0) Exit
+Exiting the engine.
+
+Shutting down: freeing 2 device(s) and 4 alert record(s).
+Memory released. Goodbye.
