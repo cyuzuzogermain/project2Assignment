@@ -1,0 +1,916 @@
+======================================================================
+Student ID: 12345
+Project: Dynamic Text Mining and Linguistic Pattern Analyzer
+Source: Pride and Prejudice by Jane Austen (1813), Chapter 3. Project Gutenberg eBook #1342 (public domain)
+Custom Analysis: Lexical Diversity Score
+======================================================================
+
+---------------------------- MENU ----------------------------
+  1. Use the default Austen paragraph
+  2. Enter or paste my own paragraph
+  3. Count words
+  4. Longest word
+  5. Most frequent word
+  6. Display word statistics
+  7. Sort word statistics
+  8. Search for a word
+  9. Text summary
+ 10. Lexical Diversity analysis (custom)
+ 11. Memory inspection
+  0. Exit
+--------------------------------------------------------------
+Choose an option (0-11): abc
+Invalid option. Please enter a whole number from 0 to 11.
+
+---------------------------- MENU ----------------------------
+  1. Use the default Austen paragraph
+  2. Enter or paste my own paragraph
+  3. Count words
+  4. Longest word
+  5. Most frequent word
+  6. Display word statistics
+  7. Sort word statistics
+  8. Search for a word
+  9. Text summary
+ 10. Lexical Diversity analysis (custom)
+ 11. Memory inspection
+  0. Exit
+--------------------------------------------------------------
+Choose an option (0-11): 99
+Invalid option. Please enter a whole number from 0 to 11.
+
+---------------------------- MENU ----------------------------
+  1. Use the default Austen paragraph
+  2. Enter or paste my own paragraph
+  3. Count words
+  4. Longest word
+  5. Most frequent word
+  6. Display word statistics
+  7. Sort word statistics
+  8. Search for a word
+  9. Text summary
+ 10. Lexical Diversity analysis (custom)
+ 11. Memory inspection
+  0. Exit
+--------------------------------------------------------------
+Choose an option (0-11): 1
+Loaded the default paragraph: 989 characters (heap block allocated with malloc, 990 bytes).
+Choose option 3 to count the words.
+
+---------------------------- MENU ----------------------------
+  1. Use the default Austen paragraph
+  2. Enter or paste my own paragraph
+  3. Count words
+  4. Longest word
+  5. Most frequent word
+  6. Display word statistics
+  7. Sort word statistics
+  8. Search for a word
+  9. Text summary
+ 10. Lexical Diversity analysis (custom)
+ 11. Memory inspection
+  0. Exit
+--------------------------------------------------------------
+Choose an option (0-11): 3
+Total words     : 168
+Distinct words  : 104
+Truncated words : 0 (longer than 39 characters)
+
+---------------------------- MENU ----------------------------
+  1. Use the default Austen paragraph
+  2. Enter or paste my own paragraph
+  3. Count words
+  4. Longest word
+  5. Most frequent word
+  6. Display word statistics
+  7. Sort word statistics
+  8. Search for a word
+  9. Text summary
+ 10. Lexical Diversity analysis (custom)
+ 11. Memory inspection
+  0. Exit
+--------------------------------------------------------------
+Choose an option (0-11): 4
+Longest word: "brother-in-law"
+True length : 14 characters (measured on the raw text)
+
+---------------------------- MENU ----------------------------
+  1. Use the default Austen paragraph
+  2. Enter or paste my own paragraph
+  3. Count words
+  4. Longest word
+  5. Most frequent word
+  6. Display word statistics
+  7. Sort word statistics
+  8. Search for a word
+  9. Text summary
+ 10. Lexical Diversity analysis (custom)
+ 11. Memory inspection
+  0. Exit
+--------------------------------------------------------------
+Choose an option (0-11): 5
+Most frequent word: "his"
+Occurrences       : 11 (6.55% of 168 words)
+
+---------------------------- MENU ----------------------------
+  1. Use the default Austen paragraph
+  2. Enter or paste my own paragraph
+  3. Count words
+  4. Longest word
+  5. Most frequent word
+  6. Display word statistics
+  7. Sort word statistics
+  8. Search for a word
+  9. Text summary
+ 10. Lexical Diversity analysis (custom)
+ 11. Memory inspection
+  0. Exit
+--------------------------------------------------------------
+Choose an option (0-11): 6
+    Word                                        Count
+    ---------------------------------------- --------
+    mr                                              4
+    bingley                                         2
+    was                                             5
+    good-looking                                    1
+    and                                             7
+    gentlemanlike                                   1
+    he                                              4
+    had                                             1
+    a                                               6
+    pleasant                                        1
+    countenance                                     2
+    easy                                            1
+    unaffected                                      1
+    manners                                         2
+    his                                            11
+    sisters                                         1
+    were                                            1
+    fine                                            3
+    women                                           1
+    with                                            3
+    an                                              1
+    air                                             1
+    of                                              5
+    decided                                         1
+    fashion                                         1
+    brother-in-law                                  1
+    hurst                                           1
+    merely                                          1
+    looked                                          2
+    the                                             8
+    gentleman                                       1
+    but                                             1
+    friend                                          2
+    darcy                                           1
+    soon                                            1
+    drew                                            1
+    attention                                       1
+    room                                            1
+    by                                              1
+    tall                                            1
+    person                                          1
+    handsome                                        1
+    features                                        1
+    noble                                           1
+    mien                                            1
+    report                                          1
+    which                                           2
+    in                                              2
+    general                                         1
+    circulation                                     1
+    within                                          1
+    five                                            1
+    minutes                                         1
+    after                                           1
+    entrance                                        1
+    having                                          2
+    ten                                             1
+    thousand                                        1
+    year                                            1
+    gentlemen                                       1
+    pronounced                                      1
+    him                                             2
+    to                                              4
+    be                                              4
+    figure                                          1
+    man                                             1
+    ladies                                          1
+    declared                                        1
+    much                                            1
+    handsomer                                       1
+    than                                            1
+    at                                              1
+    great                                           1
+    admiration                                      1
+    for                                             2
+    about                                           1
+    half                                            1
+    evening                                         1
+    till                                            1
+    gave                                            1
+    disgust                                         1
+    turned                                          1
+    tide                                            1
+    popularity                                      1
+    discovered                                      1
+    proud                                           1
+    above                                           2
+    company                                         1
+    being                                           2
+    pleased                                         1
+    not                                             1
+    all                                             1
+    large                                           1
+    estate                                          1
+    derbyshire                                      1
+    could                                           1
+    then                                            1
+    save                                            1
+    from                                            1
+    most                                            1
+    forbidding                                      1
+    disagreeable                                    1
+    unworthy                                        1
+    compared                                        1
+
+    Totals: 168 words, 104 distinct, 0 truncated to 39 characters.
+
+---------------------------- MENU ----------------------------
+  1. Use the default Austen paragraph
+  2. Enter or paste my own paragraph
+  3. Count words
+  4. Longest word
+  5. Most frequent word
+  6. Display word statistics
+  7. Sort word statistics
+  8. Search for a word
+  9. Text summary
+ 10. Lexical Diversity analysis (custom)
+ 11. Memory inspection
+  0. Exit
+--------------------------------------------------------------
+Choose an option (0-11): 7
+Sort word statistics by:
+  1. Alphabetical (strcmp, A-Z)
+  2. Frequency (high to low, ties alphabetical)
+  0. Cancel
+Your choice: 2
+Sorted by frequency with qsort(cmp_freq): count descending, ties alphabetical.
+First 5 entries:
+    his                                            11
+    the                                             8
+    and                                             7
+    a                                               6
+    of                                              5
+(order is kept until the text changes; option 6 shows the full table)
+
+---------------------------- MENU ----------------------------
+  1. Use the default Austen paragraph
+  2. Enter or paste my own paragraph
+  3. Count words
+  4. Longest word
+  5. Most frequent word
+  6. Display word statistics
+  7. Sort word statistics
+  8. Search for a word
+  9. Text summary
+ 10. Lexical Diversity analysis (custom)
+ 11. Memory inspection
+  0. Exit
+--------------------------------------------------------------
+Choose an option (0-11): 6
+    Word                                        Count
+    ---------------------------------------- --------
+    his                                            11
+    the                                             8
+    and                                             7
+    a                                               6
+    of                                              5
+    was                                             5
+    be                                              4
+    he                                              4
+    mr                                              4
+    to                                              4
+    fine                                            3
+    with                                            3
+    above                                           2
+    being                                           2
+    bingley                                         2
+    countenance                                     2
+    for                                             2
+    friend                                          2
+    having                                          2
+    him                                             2
+    in                                              2
+    looked                                          2
+    manners                                         2
+    which                                           2
+    about                                           1
+    admiration                                      1
+    after                                           1
+    air                                             1
+    all                                             1
+    an                                              1
+    at                                              1
+    attention                                       1
+    brother-in-law                                  1
+    but                                             1
+    by                                              1
+    circulation                                     1
+    company                                         1
+    compared                                        1
+    could                                           1
+    darcy                                           1
+    decided                                         1
+    declared                                        1
+    derbyshire                                      1
+    disagreeable                                    1
+    discovered                                      1
+    disgust                                         1
+    drew                                            1
+    easy                                            1
+    entrance                                        1
+    estate                                          1
+    evening                                         1
+    fashion                                         1
+    features                                        1
+    figure                                          1
+    five                                            1
+    forbidding                                      1
+    from                                            1
+    gave                                            1
+    general                                         1
+    gentleman                                       1
+    gentlemanlike                                   1
+    gentlemen                                       1
+    good-looking                                    1
+    great                                           1
+    had                                             1
+    half                                            1
+    handsome                                        1
+    handsomer                                       1
+    hurst                                           1
+    ladies                                          1
+    large                                           1
+    man                                             1
+    merely                                          1
+    mien                                            1
+    minutes                                         1
+    most                                            1
+    much                                            1
+    noble                                           1
+    not                                             1
+    person                                          1
+    pleasant                                        1
+    pleased                                         1
+    popularity                                      1
+    pronounced                                      1
+    proud                                           1
+    report                                          1
+    room                                            1
+    save                                            1
+    sisters                                         1
+    soon                                            1
+    tall                                            1
+    ten                                             1
+    than                                            1
+    then                                            1
+    thousand                                        1
+    tide                                            1
+    till                                            1
+    turned                                          1
+    unaffected                                      1
+    unworthy                                        1
+    were                                            1
+    within                                          1
+    women                                           1
+    year                                            1
+
+    Totals: 168 words, 104 distinct, 0 truncated to 39 characters.
+
+---------------------------- MENU ----------------------------
+  1. Use the default Austen paragraph
+  2. Enter or paste my own paragraph
+  3. Count words
+  4. Longest word
+  5. Most frequent word
+  6. Display word statistics
+  7. Sort word statistics
+  8. Search for a word
+  9. Text summary
+ 10. Lexical Diversity analysis (custom)
+ 11. Memory inspection
+  0. Exit
+--------------------------------------------------------------
+Choose an option (0-11): 7
+Sort word statistics by:
+  1. Alphabetical (strcmp, A-Z)
+  2. Frequency (high to low, ties alphabetical)
+  0. Cancel
+Your choice: 1
+Sorted alphabetically with qsort(cmp_alpha).
+First 5 entries:
+    a                                               6
+    about                                           1
+    above                                           2
+    admiration                                      1
+    after                                           1
+(order is kept until the text changes; option 6 shows the full table)
+
+---------------------------- MENU ----------------------------
+  1. Use the default Austen paragraph
+  2. Enter or paste my own paragraph
+  3. Count words
+  4. Longest word
+  5. Most frequent word
+  6. Display word statistics
+  7. Sort word statistics
+  8. Search for a word
+  9. Text summary
+ 10. Lexical Diversity analysis (custom)
+ 11. Memory inspection
+  0. Exit
+--------------------------------------------------------------
+Choose an option (0-11): 6
+    Word                                        Count
+    ---------------------------------------- --------
+    a                                               6
+    about                                           1
+    above                                           2
+    admiration                                      1
+    after                                           1
+    air                                             1
+    all                                             1
+    an                                              1
+    and                                             7
+    at                                              1
+    attention                                       1
+    be                                              4
+    being                                           2
+    bingley                                         2
+    brother-in-law                                  1
+    but                                             1
+    by                                              1
+    circulation                                     1
+    company                                         1
+    compared                                        1
+    could                                           1
+    countenance                                     2
+    darcy                                           1
+    decided                                         1
+    declared                                        1
+    derbyshire                                      1
+    disagreeable                                    1
+    discovered                                      1
+    disgust                                         1
+    drew                                            1
+    easy                                            1
+    entrance                                        1
+    estate                                          1
+    evening                                         1
+    fashion                                         1
+    features                                        1
+    figure                                          1
+    fine                                            3
+    five                                            1
+    for                                             2
+    forbidding                                      1
+    friend                                          2
+    from                                            1
+    gave                                            1
+    general                                         1
+    gentleman                                       1
+    gentlemanlike                                   1
+    gentlemen                                       1
+    good-looking                                    1
+    great                                           1
+    had                                             1
+    half                                            1
+    handsome                                        1
+    handsomer                                       1
+    having                                          2
+    he                                              4
+    him                                             2
+    his                                            11
+    hurst                                           1
+    in                                              2
+    ladies                                          1
+    large                                           1
+    looked                                          2
+    man                                             1
+    manners                                         2
+    merely                                          1
+    mien                                            1
+    minutes                                         1
+    most                                            1
+    mr                                              4
+    much                                            1
+    noble                                           1
+    not                                             1
+    of                                              5
+    person                                          1
+    pleasant                                        1
+    pleased                                         1
+    popularity                                      1
+    pronounced                                      1
+    proud                                           1
+    report                                          1
+    room                                            1
+    save                                            1
+    sisters                                         1
+    soon                                            1
+    tall                                            1
+    ten                                             1
+    than                                            1
+    the                                             8
+    then                                            1
+    thousand                                        1
+    tide                                            1
+    till                                            1
+    to                                              4
+    turned                                          1
+    unaffected                                      1
+    unworthy                                        1
+    was                                             5
+    were                                            1
+    which                                           2
+    with                                            3
+    within                                          1
+    women                                           1
+    year                                            1
+
+    Totals: 168 words, 104 distinct, 0 truncated to 39 characters.
+
+---------------------------- MENU ----------------------------
+  1. Use the default Austen paragraph
+  2. Enter or paste my own paragraph
+  3. Count words
+  4. Longest word
+  5. Most frequent word
+  6. Display word statistics
+  7. Sort word statistics
+  8. Search for a word
+  9. Text summary
+ 10. Lexical Diversity analysis (custom)
+ 11. Memory inspection
+  0. Exit
+--------------------------------------------------------------
+Choose an option (0-11): 8
+Word to search: the
+Found "the": 8 occurrence(s) (normalised search input).
+
+---------------------------- MENU ----------------------------
+  1. Use the default Austen paragraph
+  2. Enter or paste my own paragraph
+  3. Count words
+  4. Longest word
+  5. Most frequent word
+  6. Display word statistics
+  7. Sort word statistics
+  8. Search for a word
+  9. Text summary
+ 10. Lexical Diversity analysis (custom)
+ 11. Memory inspection
+  0. Exit
+--------------------------------------------------------------
+Choose an option (0-11): 8
+Word to search: zyzzy
+"zyzzy" not found in the text.
+
+---------------------------- MENU ----------------------------
+  1. Use the default Austen paragraph
+  2. Enter or paste my own paragraph
+  3. Count words
+  4. Longest word
+  5. Most frequent word
+  6. Display word statistics
+  7. Sort word statistics
+  8. Search for a word
+  9. Text summary
+ 10. Lexical Diversity analysis (custom)
+ 11. Memory inspection
+  0. Exit
+--------------------------------------------------------------
+Choose an option (0-11): 10
+------------------------------------------------------------------
+ CUSTOM ANALYSIS: Lexical Diversity Score (LDS)
+------------------------------------------------------------------
+Purpose
+  The LDS is the type-token ratio expressed as a percentage. It
+  measures how varied the vocabulary is: the more the text reuses
+  the same words, the lower the score.  Together with the supporting
+  metrics below it separates "many different words" from "the same
+  few words repeated".
+
+Formulas and current values
+  LDS                  = distinct_words / total_words * 100
+                       = 104 / 168 * 100 = 61.90%
+  Repetition Intensity = distinct words occurring 2 or more times
+                       / distinct_words * 100
+                       = 24 / 104 * 100 = 23.08%
+  Hapax ratio          = distinct words occurring exactly once
+                       / distinct_words * 100
+                       = 80 / 104 * 100 = 76.92%
+  Average word length  = total letters in all words / total_words
+                       = 793 / 168 = 4.72 characters
+
+Interpretation guide
+  Heuristic thresholds for short passages: the score falls as texts
+  get longer, because long texts repeat more vocabulary.
+    at least 75      : very varied vocabulary
+    55 to 74.99      : moderately varied
+    below 55         : repetitive
+  Current text: 61.90% -> moderately varied
+
+Top 5 most repeated words
+  1. his                      11
+  2. the                      8
+  3. and                      7
+  4. a                        6
+  5. of                       5
+
+---------------------------- MENU ----------------------------
+  1. Use the default Austen paragraph
+  2. Enter or paste my own paragraph
+  3. Count words
+  4. Longest word
+  5. Most frequent word
+  6. Display word statistics
+  7. Sort word statistics
+  8. Search for a word
+  9. Text summary
+ 10. Lexical Diversity analysis (custom)
+ 11. Memory inspection
+  0. Exit
+--------------------------------------------------------------
+Choose an option (0-11): 11
+------------------------------------------------------------------
+ MEMORY INSPECTION (addresses printed with %p as (void *))
+------------------------------------------------------------------
+  Text buffer address         : 0x25914030
+      -> heap block holding the text (989 bytes used, 990 bytes allocated)
+  Word statistics array       : 0x25914420
+      -> heap block holding the array of distinct words (104 entries used, 128 entries allocated, 5632 bytes allocated)
+  Selected word-stat entry    : 0x25914dec  (word "his")
+      -> address of one element inside that array: base address + index * sizeof(struct wordStat)
+      -> index 57, sizeof(struct wordStat) = 44 bytes; difference from base = 2508 bytes (expected 2508)
+      -> sanity check: matches
+  How to read it: each address is the start of a block obtained
+  from malloc/realloc on the heap; the selected entry is a member
+  of the array, so its address is the array base plus the byte
+  offset of that element.
+
+---------------------------- MENU ----------------------------
+  1. Use the default Austen paragraph
+  2. Enter or paste my own paragraph
+  3. Count words
+  4. Longest word
+  5. Most frequent word
+  6. Display word statistics
+  7. Sort word statistics
+  8. Search for a word
+  9. Text summary
+ 10. Lexical Diversity analysis (custom)
+ 11. Memory inspection
+  0. Exit
+--------------------------------------------------------------
+Choose an option (0-11): 9
+======================================================================
+Student ID: 12345
+Project: Dynamic Text Mining and Linguistic Pattern Analyzer
+Source: Pride and Prejudice by Jane Austen (1813), Chapter 3. Project Gutenberg eBook #1342 (public domain)
+Custom Analysis: Lexical Diversity Score
+======================================================================
+  Total words             : 168
+  Distinct words          : 104
+  Average word length     : 4.72 characters
+  Longest word            : "brother-in-law" (14 characters)
+  Most frequent word      : "his" (11 occurrences)
+  Truncated words         : 0
+
+  Custom analysis - Lexical Diversity Score
+  LDS                     : 61.90% (moderately varied)
+  Repetition intensity    : 23.08%
+  Hapax ratio             : 76.92%
+
+  Memory inspection (same as menu 11)
+  Text buffer address         : 0x25914030
+      -> heap block holding the text (989 bytes used, 990 bytes allocated)
+  Word statistics array       : 0x25914420
+      -> heap block holding the array of distinct words (104 entries used, 128 entries allocated, 5632 bytes allocated)
+  Selected word-stat entry    : 0x25914dec  (word "his")
+      -> address of one element inside that array: base address + index * sizeof(struct wordStat)
+      -> index 57, sizeof(struct wordStat) = 44 bytes; difference from base = 2508 bytes (expected 2508)
+      -> sanity check: matches
+
+---------------------------- MENU ----------------------------
+  1. Use the default Austen paragraph
+  2. Enter or paste my own paragraph
+  3. Count words
+  4. Longest word
+  5. Most frequent word
+  6. Display word statistics
+  7. Sort word statistics
+  8. Search for a word
+  9. Text summary
+ 10. Lexical Diversity analysis (custom)
+ 11. Memory inspection
+  0. Exit
+--------------------------------------------------------------
+Choose an option (0-11): 2
+Paste or type your text (any length).
+End with a line containing only END, or with EOF.
+The quick brown fox jumps over the lazy dog. The quick brown fox jumps again and again!
+Loaded 88 characters of user text (256 bytes allocated, capacity 256).
+  starts with: "The quick brown fox jumps over the lazy dog. The quick brown..."
+
+---------------------------- MENU ----------------------------
+  1. Use the default Austen paragraph
+  2. Enter or paste my own paragraph
+  3. Count words
+  4. Longest word
+  5. Most frequent word
+  6. Display word statistics
+  7. Sort word statistics
+  8. Search for a word
+  9. Text summary
+ 10. Lexical Diversity analysis (custom)
+ 11. Memory inspection
+  0. Exit
+--------------------------------------------------------------
+Choose an option (0-11): 3
+Total words     : 17
+Distinct words  : 10
+Truncated words : 0 (longer than 39 characters)
+
+---------------------------- MENU ----------------------------
+  1. Use the default Austen paragraph
+  2. Enter or paste my own paragraph
+  3. Count words
+  4. Longest word
+  5. Most frequent word
+  6. Display word statistics
+  7. Sort word statistics
+  8. Search for a word
+  9. Text summary
+ 10. Lexical Diversity analysis (custom)
+ 11. Memory inspection
+  0. Exit
+--------------------------------------------------------------
+Choose an option (0-11): 5
+Most frequent word: "the"
+Occurrences       : 3 (17.65% of 17 words)
+
+---------------------------- MENU ----------------------------
+  1. Use the default Austen paragraph
+  2. Enter or paste my own paragraph
+  3. Count words
+  4. Longest word
+  5. Most frequent word
+  6. Display word statistics
+  7. Sort word statistics
+  8. Search for a word
+  9. Text summary
+ 10. Lexical Diversity analysis (custom)
+ 11. Memory inspection
+  0. Exit
+--------------------------------------------------------------
+Choose an option (0-11): 9
+======================================================================
+Student ID: 12345
+Project: Dynamic Text Mining and Linguistic Pattern Analyzer
+Source: User-supplied text
+Custom Analysis: Lexical Diversity Score
+======================================================================
+  Total words             : 17
+  Distinct words          : 10
+  Average word length     : 4.06 characters
+  Longest word            : "quick" (5 characters)
+  Most frequent word      : "the" (3 occurrences)
+  Truncated words         : 0
+
+  Custom analysis - Lexical Diversity Score
+  LDS                     : 58.82% (moderately varied)
+  Repetition intensity    : 60.00%
+  Hapax ratio             : 40.00%
+
+  Memory inspection (same as menu 11)
+  Text buffer address         : 0x25915a30
+      -> heap block holding the text (88 bytes used, 256 bytes allocated)
+  Word statistics array       : 0x25914420
+      -> heap block holding the array of distinct words (10 entries used, 128 entries allocated, 5632 bytes allocated)
+  Selected word-stat entry    : 0x25914420  (word "the")
+      -> address of one element inside that array: base address + index * sizeof(struct wordStat)
+      -> index 0, sizeof(struct wordStat) = 44 bytes; difference from base = 0 bytes (expected 0)
+      -> sanity check: matches
+
+---------------------------- MENU ----------------------------
+  1. Use the default Austen paragraph
+  2. Enter or paste my own paragraph
+  3. Count words
+  4. Longest word
+  5. Most frequent word
+  6. Display word statistics
+  7. Sort word statistics
+  8. Search for a word
+  9. Text summary
+ 10. Lexical Diversity analysis (custom)
+ 11. Memory inspection
+  0. Exit
+--------------------------------------------------------------
+Choose an option (0-11): 11
+------------------------------------------------------------------
+ MEMORY INSPECTION (addresses printed with %p as (void *))
+------------------------------------------------------------------
+  Text buffer address         : 0x25915a30
+      -> heap block holding the text (88 bytes used, 256 bytes allocated)
+  Word statistics array       : 0x25914420
+      -> heap block holding the array of distinct words (10 entries used, 128 entries allocated, 5632 bytes allocated)
+  Selected word-stat entry    : 0x25914420  (word "the")
+      -> address of one element inside that array: base address + index * sizeof(struct wordStat)
+      -> index 0, sizeof(struct wordStat) = 44 bytes; difference from base = 0 bytes (expected 0)
+      -> sanity check: matches
+  How to read it: each address is the start of a block obtained
+  from malloc/realloc on the heap; the selected entry is a member
+  of the array, so its address is the array base plus the byte
+  offset of that element.
+
+---------------------------- MENU ----------------------------
+  1. Use the default Austen paragraph
+  2. Enter or paste my own paragraph
+  3. Count words
+  4. Longest word
+  5. Most frequent word
+  6. Display word statistics
+  7. Sort word statistics
+  8. Search for a word
+  9. Text summary
+ 10. Lexical Diversity analysis (custom)
+ 11. Memory inspection
+  0. Exit
+--------------------------------------------------------------
+Choose an option (0-11): 1
+Loaded the default paragraph: 989 characters (heap block allocated with malloc, 990 bytes).
+Choose option 3 to count the words.
+
+---------------------------- MENU ----------------------------
+  1. Use the default Austen paragraph
+  2. Enter or paste my own paragraph
+  3. Count words
+  4. Longest word
+  5. Most frequent word
+  6. Display word statistics
+  7. Sort word statistics
+  8. Search for a word
+  9. Text summary
+ 10. Lexical Diversity analysis (custom)
+ 11. Memory inspection
+  0. Exit
+--------------------------------------------------------------
+Choose an option (0-11): 9
+======================================================================
+Student ID: 12345
+Project: Dynamic Text Mining and Linguistic Pattern Analyzer
+Source: Pride and Prejudice by Jane Austen (1813), Chapter 3. Project Gutenberg eBook #1342 (public domain)
+Custom Analysis: Lexical Diversity Score
+======================================================================
+  Total words             : 168
+  Distinct words          : 104
+  Average word length     : 4.72 characters
+  Longest word            : "brother-in-law" (14 characters)
+  Most frequent word      : "his" (11 occurrences)
+  Truncated words         : 0
+
+  Custom analysis - Lexical Diversity Score
+  LDS                     : 61.90% (moderately varied)
+  Repetition intensity    : 23.08%
+  Hapax ratio             : 76.92%
+
+  Memory inspection (same as menu 11)
+  Text buffer address         : 0x25914030
+      -> heap block holding the text (989 bytes used, 990 bytes allocated)
+  Word statistics array       : 0x25914420
+      -> heap block holding the array of distinct words (104 entries used, 128 entries allocated, 5632 bytes allocated)
+  Selected word-stat entry    : 0x25914688  (word "his")
+      -> address of one element inside that array: base address + index * sizeof(struct wordStat)
+      -> index 14, sizeof(struct wordStat) = 44 bytes; difference from base = 616 bytes (expected 616)
+      -> sanity check: matches
+
+---------------------------- MENU ----------------------------
+  1. Use the default Austen paragraph
+  2. Enter or paste my own paragraph
+  3. Count words
+  4. Longest word
+  5. Most frequent word
+  6. Display word statistics
+  7. Sort word statistics
+  8. Search for a word
+  9. Text summary
+ 10. Lexical Diversity analysis (custom)
+ 11. Memory inspection
+  0. Exit
+--------------------------------------------------------------
+Choose an option (0-11): 0
+Exiting: all memory will now be freed.
+Freed: text buffer (heap block, 990 bytes) and word statistics array (heap block, 128 entries).

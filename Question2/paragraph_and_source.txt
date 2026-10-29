@@ -1,0 +1,54 @@
+======================================================================
+ paragraph_and_source.txt
+ Selected paragraph and full source details for
+ "Dynamic Text Mining and Linguistic Pattern Analyzer"
+ Student ID: 12345
+======================================================================
+
+SOURCE
+  Author     : Jane Austen
+  Title      : Pride and Prejudice
+  Year       : 1813
+  Location   : Chapter 3
+  Edition    : Project Gutenberg eBook #1342
+  Status     : public domain (Project Gutenberg: works published before
+               1929 and released without copyright restriction)
+  Program line (main.c, menu option 1):
+    Source: Pride and Prejudice by Jane Austen (1813), Chapter 3.
+            Project Gutenberg eBook #1342 (public domain)
+  When the user loads their own text (menu option 2) the program prints
+    Source: User-supplied text
+
+----------------------------------------------------------------------
+PARAGRAPH (stored in main.c as DEFAULT_PARAGRAPH, exactly as written)
+----------------------------------------------------------------------
+
+Mr. Bingley was good-looking and gentlemanlike; he had a pleasant countenance, and easy, unaffected manners. His sisters were fine women, with an air of decided fashion. His brother-in-law, Mr. Hurst, merely looked the gentleman; but his friend Mr. Darcy soon drew the attention of the room by his fine, tall person, handsome features, noble mien, and the report which was in general circulation within five minutes after his entrance, of his having ten thousand a year. The gentlemen pronounced him to be a fine figure of a man, the ladies declared he was much handsomer than Mr. Bingley, and he was looked at with great admiration for about half the evening, till his manners gave a disgust which turned the tide of his popularity; for he was discovered to be proud; to be above his company, and above being pleased; and not all his large estate in Derbyshire could then save him from having a most forbidding, disagreeable countenance, and being unworthy to be compared with his friend.
+
+----------------------------------------------------------------------
+WORD COUNT FOR THIS PARAGRAPH (menu option 3 on the default text)
+----------------------------------------------------------------------
+
+  Total words        : 168
+  Distinct words     : 104
+  Truncated words    : 0 (no word longer than 39 characters)
+  Total letters      : 793
+  Average word length: 793 / 168 = 4.72 characters
+  Longest word       : "brother-in-law" (14 characters, one word)
+  Most frequent word : "his" (11 occurrences, 6.55% of the text)
+
+  Lexical Diversity Score          = 104 / 168 * 100 = 61.90%
+  Repetition Intensity             =  24 / 104 * 100 = 23.08%
+  Hapax ratio                      =  80 / 104 * 100 = 76.92%
+  Band (heuristic for short texts) = moderately varied
+
+VERIFICATION
+  The same paragraph was tokenised by an independent Python script that
+  implements the documented word rules (ASCII letters and digits, ASCII
+  punctuation stripped, internal apostrophes and single hyphens kept,
+  non-ASCII bytes as separators, lower case, 39-character storage limit).
+  It reported 168 total words, 104 distinct words, 0 truncated words,
+  793 letters, longest word 14 characters and most frequent word
+  "his" (11) - identical to the program's output.
+
+======================================================================

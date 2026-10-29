@@ -1,0 +1,1139 @@
+======================================================================
+ evidence.txt  -  test evidence for
+ Dynamic Text Mining and Linguistic Pattern Analyzer
+ Student ID: 12345
+======================================================================
+
+Build used for all runs below:
+  $ gcc -Wall -Wextra -std=c11 -o analyzer main.c
+  -> 0 warnings, exit 0
+
+----------------------------------------------------------------------
+ TEST 2 (cross-check): program vs an independent Python tokenizer
+----------------------------------------------------------------------
+
+[program] menu 1 then 3, 4, 5:
+Total words     : 168
+Distinct words  : 104
+Truncated words : 0 (longer than 39 characters)
+Longest word: "brother-in-law"
+True length : 14 characters (measured on the raw text)
+Most frequent word: "his"
+Occurrences       : 11 (6.55% of 168 words)
+
+[python, method 1] independent byte-level implementation of the rules:
+total_words = 168
+distinct_words = 104
+truncated_words = 0
+total_letters = 793
+avg_word_length = 4.720238
+longest_len = 14
+most_frequent = (b'his', 11)
+LDS = 61.9048
+hapax = 80
+repeated = 24
+
+[python, method 2] grep-style regex re.findall([A-Za-z0-9]+(['-]...)*):
+total_words = 168
+distinct_words = 104
+top 5 = [('his', 11), ('the', 8), ('and', 7), ('a', 6), ('was', 5)]
+
+  RESULT: program 168 total / 104 distinct / 0 truncated / 793 letters
+          / longest 14 / most frequent 'his' (11) == both Python methods.
+          AGREE.
+
+======================================================================
+ TEST 3: punctuation test
+======================================================================
+Input to option 2 (one line):
+  Don't stop--it's a well-known fact; "quoted" words, (brackets)... and THE the The!
+then options 3, 6 and 8 (search "the").
+----------------------------------------------------------------------
+======================================================================
+Student ID: 12345
+Project: Dynamic Text Mining and Linguistic Pattern Analyzer
+Source: Pride and Prejudice by Jane Austen (1813), Chapter 3. Project Gutenberg eBook #1342 (public domain)
+Custom Analysis: Lexical Diversity Score
+======================================================================
+
+---------------------------- MENU ----------------------------
+  1. Use the default Austen paragraph
+  2. Enter or paste my own paragraph
+  3. Count words
+  4. Longest word
+  5. Most frequent word
+  6. Display word statistics
+  7. Sort word statistics
+  8. Search for a word
+  9. Text summary
+ 10. Lexical Diversity analysis (custom)
+ 11. Memory inspection
+  0. Exit
+--------------------------------------------------------------
+Choose an option (0-11): 2
+Paste or type your text (any length).
+End with a line containing only END, or with EOF.
+Don't stop--it's a well-known fact; "quoted" words, (brackets)... and THE the The!
+Loaded 83 characters of user text (256 bytes allocated, capacity 256).
+  starts with: "Don't stop--it's a well-known fact; "quoted" words, (bracket..."
+
+---------------------------- MENU ----------------------------
+  1. Use the default Austen paragraph
+  2. Enter or paste my own paragraph
+  3. Count words
+  4. Longest word
+  5. Most frequent word
+  6. Display word statistics
+  7. Sort word statistics
+  8. Search for a word
+  9. Text summary
+ 10. Lexical Diversity analysis (custom)
+ 11. Memory inspection
+  0. Exit
+--------------------------------------------------------------
+Choose an option (0-11): 3
+Total words     : 13
+Distinct words  : 11
+Truncated words : 0 (longer than 39 characters)
+
+---------------------------- MENU ----------------------------
+  1. Use the default Austen paragraph
+  2. Enter or paste my own paragraph
+  3. Count words
+  4. Longest word
+  5. Most frequent word
+  6. Display word statistics
+  7. Sort word statistics
+  8. Search for a word
+  9. Text summary
+ 10. Lexical Diversity analysis (custom)
+ 11. Memory inspection
+  0. Exit
+--------------------------------------------------------------
+Choose an option (0-11): 6
+    Word                                        Count
+    ---------------------------------------- --------
+    don't                                           1
+    stop                                            1
+    it's                                            1
+    a                                               1
+    well-known                                      1
+    fact                                            1
+    quoted                                          1
+    words                                           1
+    brackets                                        1
+    and                                             1
+    the                                             3
+
+    Totals: 13 words, 11 distinct, 0 truncated to 39 characters.
+
+---------------------------- MENU ----------------------------
+  1. Use the default Austen paragraph
+  2. Enter or paste my own paragraph
+  3. Count words
+  4. Longest word
+  5. Most frequent word
+  6. Display word statistics
+  7. Sort word statistics
+  8. Search for a word
+  9. Text summary
+ 10. Lexical Diversity analysis (custom)
+ 11. Memory inspection
+  0. Exit
+--------------------------------------------------------------
+Choose an option (0-11): 8
+Word to search: the
+Found "the": 3 occurrence(s) (normalised search input).
+
+---------------------------- MENU ----------------------------
+  1. Use the default Austen paragraph
+  2. Enter or paste my own paragraph
+  3. Count words
+  4. Longest word
+  5. Most frequent word
+  6. Display word statistics
+  7. Sort word statistics
+  8. Search for a word
+  9. Text summary
+ 10. Lexical Diversity analysis (custom)
+ 11. Memory inspection
+  0. Exit
+--------------------------------------------------------------
+Choose an option (0-11): 0
+Exiting: all memory will now be freed.
+Freed: text buffer (heap block, 256 bytes) and word statistics array (heap block, 16 entries).
+
+Expected: 13 total, 11 distinct, don't / it's / well-known kept whole,
+          the = 3, no punctuation inside any stored word. -> MATCHED
+
+======================================================================
+ TEST 4: repeated-words test + sorting
+======================================================================
+Input: text "a a a b b c", then 3, 6, sort by frequency, 6,
+       sort alphabetically, 6, then a second text
+       "zeta zeta beta beta alpha" to show the tie-break.
+----------------------------------------------------------------------
+======================================================================
+Student ID: 12345
+Project: Dynamic Text Mining and Linguistic Pattern Analyzer
+Source: Pride and Prejudice by Jane Austen (1813), Chapter 3. Project Gutenberg eBook #1342 (public domain)
+Custom Analysis: Lexical Diversity Score
+======================================================================
+
+---------------------------- MENU ----------------------------
+  1. Use the default Austen paragraph
+  2. Enter or paste my own paragraph
+  3. Count words
+  4. Longest word
+  5. Most frequent word
+  6. Display word statistics
+  7. Sort word statistics
+  8. Search for a word
+  9. Text summary
+ 10. Lexical Diversity analysis (custom)
+ 11. Memory inspection
+  0. Exit
+--------------------------------------------------------------
+Choose an option (0-11): 2
+Paste or type your text (any length).
+End with a line containing only END, or with EOF.
+a a a b b c
+Loaded 12 characters of user text (256 bytes allocated, capacity 256).
+  starts with: "a a a b b c "
+
+---------------------------- MENU ----------------------------
+  1. Use the default Austen paragraph
+  2. Enter or paste my own paragraph
+  3. Count words
+  4. Longest word
+  5. Most frequent word
+  6. Display word statistics
+  7. Sort word statistics
+  8. Search for a word
+  9. Text summary
+ 10. Lexical Diversity analysis (custom)
+ 11. Memory inspection
+  0. Exit
+--------------------------------------------------------------
+Choose an option (0-11): 3
+Total words     : 6
+Distinct words  : 3
+Truncated words : 0 (longer than 39 characters)
+
+---------------------------- MENU ----------------------------
+  1. Use the default Austen paragraph
+  2. Enter or paste my own paragraph
+  3. Count words
+  4. Longest word
+  5. Most frequent word
+  6. Display word statistics
+  7. Sort word statistics
+  8. Search for a word
+  9. Text summary
+ 10. Lexical Diversity analysis (custom)
+ 11. Memory inspection
+  0. Exit
+--------------------------------------------------------------
+Choose an option (0-11): 6
+    Word                                        Count
+    ---------------------------------------- --------
+    a                                               3
+    b                                               2
+    c                                               1
+
+    Totals: 6 words, 3 distinct, 0 truncated to 39 characters.
+
+---------------------------- MENU ----------------------------
+  1. Use the default Austen paragraph
+  2. Enter or paste my own paragraph
+  3. Count words
+  4. Longest word
+  5. Most frequent word
+  6. Display word statistics
+  7. Sort word statistics
+  8. Search for a word
+  9. Text summary
+ 10. Lexical Diversity analysis (custom)
+ 11. Memory inspection
+  0. Exit
+--------------------------------------------------------------
+Choose an option (0-11): 7
+Sort word statistics by:
+  1. Alphabetical (strcmp, A-Z)
+  2. Frequency (high to low, ties alphabetical)
+  0. Cancel
+Your choice: 2
+Sorted by frequency with qsort(cmp_freq): count descending, ties alphabetical.
+First 3 entries:
+    a                                               3
+    b                                               2
+    c                                               1
+(order is kept until the text changes; option 6 shows the full table)
+
+---------------------------- MENU ----------------------------
+  1. Use the default Austen paragraph
+  2. Enter or paste my own paragraph
+  3. Count words
+  4. Longest word
+  5. Most frequent word
+  6. Display word statistics
+  7. Sort word statistics
+  8. Search for a word
+  9. Text summary
+ 10. Lexical Diversity analysis (custom)
+ 11. Memory inspection
+  0. Exit
+--------------------------------------------------------------
+Choose an option (0-11): 6
+    Word                                        Count
+    ---------------------------------------- --------
+    a                                               3
+    b                                               2
+    c                                               1
+
+    Totals: 6 words, 3 distinct, 0 truncated to 39 characters.
+
+---------------------------- MENU ----------------------------
+  1. Use the default Austen paragraph
+  2. Enter or paste my own paragraph
+  3. Count words
+  4. Longest word
+  5. Most frequent word
+  6. Display word statistics
+  7. Sort word statistics
+  8. Search for a word
+  9. Text summary
+ 10. Lexical Diversity analysis (custom)
+ 11. Memory inspection
+  0. Exit
+--------------------------------------------------------------
+Choose an option (0-11): 7
+Sort word statistics by:
+  1. Alphabetical (strcmp, A-Z)
+  2. Frequency (high to low, ties alphabetical)
+  0. Cancel
+Your choice: 1
+Sorted alphabetically with qsort(cmp_alpha).
+First 3 entries:
+    a                                               3
+    b                                               2
+    c                                               1
+(order is kept until the text changes; option 6 shows the full table)
+
+---------------------------- MENU ----------------------------
+  1. Use the default Austen paragraph
+  2. Enter or paste my own paragraph
+  3. Count words
+  4. Longest word
+  5. Most frequent word
+  6. Display word statistics
+  7. Sort word statistics
+  8. Search for a word
+  9. Text summary
+ 10. Lexical Diversity analysis (custom)
+ 11. Memory inspection
+  0. Exit
+--------------------------------------------------------------
+Choose an option (0-11): 6
+    Word                                        Count
+    ---------------------------------------- --------
+    a                                               3
+    b                                               2
+    c                                               1
+
+    Totals: 6 words, 3 distinct, 0 truncated to 39 characters.
+
+---------------------------- MENU ----------------------------
+  1. Use the default Austen paragraph
+  2. Enter or paste my own paragraph
+  3. Count words
+  4. Longest word
+  5. Most frequent word
+  6. Display word statistics
+  7. Sort word statistics
+  8. Search for a word
+  9. Text summary
+ 10. Lexical Diversity analysis (custom)
+ 11. Memory inspection
+  0. Exit
+--------------------------------------------------------------
+Choose an option (0-11): 2
+Paste or type your text (any length).
+End with a line containing only END, or with EOF.
+zeta zeta beta beta alpha
+Loaded 26 characters of user text (256 bytes allocated, capacity 256).
+  starts with: "zeta zeta beta beta alpha "
+
+---------------------------- MENU ----------------------------
+  1. Use the default Austen paragraph
+  2. Enter or paste my own paragraph
+  3. Count words
+  4. Longest word
+  5. Most frequent word
+  6. Display word statistics
+  7. Sort word statistics
+  8. Search for a word
+  9. Text summary
+ 10. Lexical Diversity analysis (custom)
+ 11. Memory inspection
+  0. Exit
+--------------------------------------------------------------
+Choose an option (0-11): 6
+    Word                                        Count
+    ---------------------------------------- --------
+    zeta                                            2
+    beta                                            2
+    alpha                                           1
+
+    Totals: 5 words, 3 distinct, 0 truncated to 39 characters.
+
+---------------------------- MENU ----------------------------
+  1. Use the default Austen paragraph
+  2. Enter or paste my own paragraph
+  3. Count words
+  4. Longest word
+  5. Most frequent word
+  6. Display word statistics
+  7. Sort word statistics
+  8. Search for a word
+  9. Text summary
+ 10. Lexical Diversity analysis (custom)
+ 11. Memory inspection
+  0. Exit
+--------------------------------------------------------------
+Choose an option (0-11): 7
+Sort word statistics by:
+  1. Alphabetical (strcmp, A-Z)
+  2. Frequency (high to low, ties alphabetical)
+  0. Cancel
+Your choice: 2
+Sorted by frequency with qsort(cmp_freq): count descending, ties alphabetical.
+First 3 entries:
+    beta                                            2
+    zeta                                            2
+    alpha                                           1
+(order is kept until the text changes; option 6 shows the full table)
+
+---------------------------- MENU ----------------------------
+  1. Use the default Austen paragraph
+  2. Enter or paste my own paragraph
+  3. Count words
+  4. Longest word
+  5. Most frequent word
+  6. Display word statistics
+  7. Sort word statistics
+  8. Search for a word
+  9. Text summary
+ 10. Lexical Diversity analysis (custom)
+ 11. Memory inspection
+  0. Exit
+--------------------------------------------------------------
+Choose an option (0-11): 6
+    Word                                        Count
+    ---------------------------------------- --------
+    beta                                            2
+    zeta                                            2
+    alpha                                           1
+
+    Totals: 5 words, 3 distinct, 0 truncated to 39 characters.
+
+---------------------------- MENU ----------------------------
+  1. Use the default Austen paragraph
+  2. Enter or paste my own paragraph
+  3. Count words
+  4. Longest word
+  5. Most frequent word
+  6. Display word statistics
+  7. Sort word statistics
+  8. Search for a word
+  9. Text summary
+ 10. Lexical Diversity analysis (custom)
+ 11. Memory inspection
+  0. Exit
+--------------------------------------------------------------
+Choose an option (0-11): 0
+Exiting: all memory will now be freed.
+Freed: text buffer (heap block, 256 bytes) and word statistics array (heap block, 16 entries).
+
+Expected: a=3 b=2 c=1 (total 6, distinct 3); alphabetical and frequency
+          order coincide for this input; with zeta/beta the frequency
+          sort puts beta before zeta (equal counts, alphabetical tie).
+          -> MATCHED
+
+======================================================================
+ TEST 5: growing-input test (20,000+ words) with realloc trace
+======================================================================
+Input: option 2 with the default paragraph repeated 120 times, each
+       followed by a unique marker word variant001..variant120,
+       then 3, 5, 11.  Run with TEXTAN_TRACE=1.
+----------------------------------------------------------------------
+======================================================================
+Student ID: 12345
+Project: Dynamic Text Mining and Linguistic Pattern Analyzer
+Source: Pride and Prejudice by Jane Austen (1813), Chapter 3. Project Gutenberg eBook #1342 (public domain)
+Custom Analysis: Lexical Diversity Score
+======================================================================
+
+---------------------------- MENU ----------------------------
+  1. Use the default Austen paragraph
+  2. Enter or paste my own paragraph
+  3. Count words
+  4. Longest word
+  5. Most frequent word
+  6. Display word statistics
+  7. Sort word statistics
+  8. Search for a word
+  9. Text summary
+ 10. Lexical Diversity analysis (custom)
+ 11. Memory inspection
+  0. Exit
+--------------------------------------------------------------
+Choose an option (0-11): 2
+Paste or type your text (any length).
+End with a line containing only END, or with EOF.
+Mr. Bingley was good-looking and gentlemanlike; he had a pleasant countenance, and easy, unaffected manners. His sisters were fine women, with an air of decided fashion. His brother-in-law, Mr. Hurst, merely looked the gentleman; but his friend Mr. Darcy soon drew the attention of the room by his fine, tall person, handsome features, noble mien, and the report which was in general circulation within five minutes after his entrance, of his having ten thousand a year. The gentlemen pronounced him to be a fine figure of a man, the ladies declared he was much handsomer than Mr. Bingley, and he was looked at with great admiration for about half the evening, till his manners gave a disgust which turned the tide of his popularity; for he was discovered to be proud; to be above his company, and above being pleased; and not all his large estate in Derbyshire could then save him from having a most forbidding, disagreeable countenance, and being unworthy to be compared with his friend. variant001
+[trace] text buffer capacity: 0 -> 1024 bytes (needed 1002)
+Mr. Bingley was good-looking and gentlemanlike; he had a pleasant countenance, and easy, unaffected manners. His sisters were fine women, with an air of decided fashion. His brother-in-law, Mr. Hurst, merely looked the gentleman; but his friend Mr. Darcy soon drew the attention of the room by his fine, tall person, handsome features, noble mien, and the report which was in general circulation within five minutes after his entrance, of his having ten thousand a year. The gentlemen pronounced him to be a fine figure of a man, the ladies declared he was much handsomer than Mr. Bingley, and he was looked at with great admiration for about half the evening, till his manners gave a disgust which turned the tide of his popularity; for he was discovered to be proud; to be above his company, and above being pleased; and not all his large estate in Derbyshire could then save him from having a most forbidding, disagreeable countenance, and being unworthy to be compared with his friend. variant002
+[trace] text buffer capacity: 1024 -> 2048 bytes (needed 2003)
+Mr. Bingley was good-looking and gentlemanlike; he had a pleasant countenance, and easy, unaffected manners. His sisters were fine women, with an air of decided fashion. His brother-in-law, Mr. Hurst, merely looked the gentleman; but his friend Mr. Darcy soon drew the attention of the room by his fine, tall person, handsome features, noble mien, and the report which was in general circulation within five minutes after his entrance, of his having ten thousand a year. The gentlemen pronounced him to be a fine figure of a man, the ladies declared he was much handsomer than Mr. Bingley, and he was looked at with great admiration for about half the evening, till his manners gave a disgust which turned the tide of his popularity; for he was discovered to be proud; to be above his company, and above being pleased; and not all his large estate in Derbyshire could then save him from having a most forbidding, disagreeable countenance, and being unworthy to be compared with his friend. variant003
+[trace] text buffer capacity: 2048 -> 4096 bytes (needed 3004)
+Mr. Bingley was good-looking and gentlemanlike; he had a pleasant countenance, and easy, unaffected manners. His sisters were fine women, with an air of decided fashion. His brother-in-law, Mr. Hurst, merely looked the gentleman; but his friend Mr. Darcy soon drew the attention of the room by his fine, tall person, handsome features, noble mien, and the report which was in general circulation within five minutes after his entrance, of his having ten thousand a year. The gentlemen pronounced him to be a fine figure of a man, the ladies declared he was much handsomer than Mr. Bingley, and he was looked at with great admiration for about half the evening, till his manners gave a disgust which turned the tide of his popularity; for he was discovered to be proud; to be above his company, and above being pleased; and not all his large estate in Derbyshire could then save him from having a most forbidding, disagreeable countenance, and being unworthy to be compared with his friend. variant004
+... (input echo stopped: pasted text longer than 4096 bytes) ...
+[trace] text buffer capacity: 4096 -> 8192 bytes (needed 5006)
+[trace] text buffer capacity: 8192 -> 16384 bytes (needed 9010)
+[trace] text buffer capacity: 16384 -> 32768 bytes (needed 17018)
+[trace] text buffer capacity: 32768 -> 65536 bytes (needed 33034)
+[trace] text buffer capacity: 65536 -> 131072 bytes (needed 66067)
+Loaded 120120 characters of user text (131072 bytes allocated, capacity 131072).
+  starts with: "Mr. Bingley was good-looking and gentlemanlike; he had a ple..."
+
+---------------------------- MENU ----------------------------
+  1. Use the default Austen paragraph
+  2. Enter or paste my own paragraph
+  3. Count words
+  4. Longest word
+  5. Most frequent word
+  6. Display word statistics
+  7. Sort word statistics
+  8. Search for a word
+  9. Text summary
+ 10. Lexical Diversity analysis (custom)
+ 11. Memory inspection
+  0. Exit
+--------------------------------------------------------------
+Choose an option (0-11): 3
+[trace] stats array capacity: 0 -> 16 entries (0 -> 704 bytes)
+[trace] stats array capacity: 16 -> 32 entries (704 -> 1408 bytes)
+[trace] stats array capacity: 32 -> 64 entries (1408 -> 2816 bytes)
+[trace] stats array capacity: 64 -> 128 entries (2816 -> 5632 bytes)
+[trace] stats array capacity: 128 -> 256 entries (5632 -> 11264 bytes)
+Total words     : 20280
+Distinct words  : 224
+Truncated words : 0 (longer than 39 characters)
+
+---------------------------- MENU ----------------------------
+  1. Use the default Austen paragraph
+  2. Enter or paste my own paragraph
+  3. Count words
+  4. Longest word
+  5. Most frequent word
+  6. Display word statistics
+  7. Sort word statistics
+  8. Search for a word
+  9. Text summary
+ 10. Lexical Diversity analysis (custom)
+ 11. Memory inspection
+  0. Exit
+--------------------------------------------------------------
+Choose an option (0-11): 5
+Most frequent word: "his"
+Occurrences       : 1320 (6.51% of 20280 words)
+
+---------------------------- MENU ----------------------------
+  1. Use the default Austen paragraph
+  2. Enter or paste my own paragraph
+  3. Count words
+  4. Longest word
+  5. Most frequent word
+  6. Display word statistics
+  7. Sort word statistics
+  8. Search for a word
+  9. Text summary
+ 10. Lexical Diversity analysis (custom)
+ 11. Memory inspection
+  0. Exit
+--------------------------------------------------------------
+Choose an option (0-11): 11
+------------------------------------------------------------------
+ MEMORY INSPECTION (addresses printed with %p as (void *))
+------------------------------------------------------------------
+  Text buffer address         : 0x7f768d40b010
+      -> heap block holding the text (120120 bytes used, 131072 bytes allocated)
+  Word statistics array       : 0x3e828030
+      -> heap block holding the array of distinct words (224 entries used, 256 entries allocated, 11264 bytes allocated)
+  Selected word-stat entry    : 0x3e828298  (word "his")
+      -> address of one element inside that array: base address + index * sizeof(struct wordStat)
+      -> index 14, sizeof(struct wordStat) = 44 bytes; difference from base = 616 bytes (expected 616)
+      -> sanity check: matches
+  How to read it: each address is the start of a block obtained
+  from malloc/realloc on the heap; the selected entry is a member
+  of the array, so its address is the array base plus the byte
+  offset of that element.
+
+---------------------------- MENU ----------------------------
+  1. Use the default Austen paragraph
+  2. Enter or paste my own paragraph
+  3. Count words
+  4. Longest word
+  5. Most frequent word
+  6. Display word statistics
+  7. Sort word statistics
+  8. Search for a word
+  9. Text summary
+ 10. Lexical Diversity analysis (custom)
+ 11. Memory inspection
+  0. Exit
+--------------------------------------------------------------
+Choose an option (0-11): 0
+Exiting: all memory will now be freed.
+Freed: text buffer (heap block, 131072 bytes) and word statistics array (heap block, 256 entries).
+
+Expected: 120 * (168 + 1) = 20280 total words;
+          104 paragraph words + 120 markers = 224 distinct;
+          most frequent 'his' = 11 * 120 = 1320.
+          -> MATCHED (20280 / 224 / his 1320)
+          Text buffer grew 0 -> 1024 -> ... -> 131072 bytes;
+          stats array grew 0 -> 16 -> 32 -> 64 -> 128 -> 256 entries.
+
+======================================================================
+ TEST 6: long-word test (60-character word)
+======================================================================
+Input: "alpha beta beta gamma <60-char word> tail tail" then 3, 4, 6, 11.
+----------------------------------------------------------------------
+======================================================================
+Student ID: 12345
+Project: Dynamic Text Mining and Linguistic Pattern Analyzer
+Source: Pride and Prejudice by Jane Austen (1813), Chapter 3. Project Gutenberg eBook #1342 (public domain)
+Custom Analysis: Lexical Diversity Score
+======================================================================
+
+---------------------------- MENU ----------------------------
+  1. Use the default Austen paragraph
+  2. Enter or paste my own paragraph
+  3. Count words
+  4. Longest word
+  5. Most frequent word
+  6. Display word statistics
+  7. Sort word statistics
+  8. Search for a word
+  9. Text summary
+ 10. Lexical Diversity analysis (custom)
+ 11. Memory inspection
+  0. Exit
+--------------------------------------------------------------
+Choose an option (0-11): 2
+Paste or type your text (any length).
+End with a line containing only END, or with EOF.
+alpha beta beta gamma abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefgh tail tail
+Loaded 93 characters of user text (256 bytes allocated, capacity 256).
+  starts with: "alpha beta beta gamma abcdefghijklmnopqrstuvwxyzabcdefghijkl..."
+
+---------------------------- MENU ----------------------------
+  1. Use the default Austen paragraph
+  2. Enter or paste my own paragraph
+  3. Count words
+  4. Longest word
+  5. Most frequent word
+  6. Display word statistics
+  7. Sort word statistics
+  8. Search for a word
+  9. Text summary
+ 10. Lexical Diversity analysis (custom)
+ 11. Memory inspection
+  0. Exit
+--------------------------------------------------------------
+Choose an option (0-11): 3
+Total words     : 7
+Distinct words  : 5
+Truncated words : 1 (longer than 39 characters)
+
+---------------------------- MENU ----------------------------
+  1. Use the default Austen paragraph
+  2. Enter or paste my own paragraph
+  3. Count words
+  4. Longest word
+  5. Most frequent word
+  6. Display word statistics
+  7. Sort word statistics
+  8. Search for a word
+  9. Text summary
+ 10. Lexical Diversity analysis (custom)
+ 11. Memory inspection
+  0. Exit
+--------------------------------------------------------------
+Choose an option (0-11): 4
+Longest word: "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefgh"
+True length : 60 characters (measured on the raw text)
+Note        : stored truncated to 39 characters in the statistics table (truncated_words counts it).
+
+---------------------------- MENU ----------------------------
+  1. Use the default Austen paragraph
+  2. Enter or paste my own paragraph
+  3. Count words
+  4. Longest word
+  5. Most frequent word
+  6. Display word statistics
+  7. Sort word statistics
+  8. Search for a word
+  9. Text summary
+ 10. Lexical Diversity analysis (custom)
+ 11. Memory inspection
+  0. Exit
+--------------------------------------------------------------
+Choose an option (0-11): 6
+    Word                                        Count
+    ---------------------------------------- --------
+    alpha                                           1
+    beta                                            2
+    gamma                                           1
+    abcdefghijklmnopqrstuvwxyzabcdefghijklm         1
+    tail                                            2
+
+    Totals: 7 words, 5 distinct, 1 truncated to 39 characters.
+
+---------------------------- MENU ----------------------------
+  1. Use the default Austen paragraph
+  2. Enter or paste my own paragraph
+  3. Count words
+  4. Longest word
+  5. Most frequent word
+  6. Display word statistics
+  7. Sort word statistics
+  8. Search for a word
+  9. Text summary
+ 10. Lexical Diversity analysis (custom)
+ 11. Memory inspection
+  0. Exit
+--------------------------------------------------------------
+Choose an option (0-11): 11
+------------------------------------------------------------------
+ MEMORY INSPECTION (addresses printed with %p as (void *))
+------------------------------------------------------------------
+  Text buffer address         : 0x3ab57030
+      -> heap block holding the text (93 bytes used, 256 bytes allocated)
+  Word statistics array       : 0x3ab57140
+      -> heap block holding the array of distinct words (5 entries used, 16 entries allocated, 704 bytes allocated)
+  Selected word-stat entry    : 0x3ab5716c  (word "beta")
+      -> address of one element inside that array: base address + index * sizeof(struct wordStat)
+      -> index 1, sizeof(struct wordStat) = 44 bytes; difference from base = 44 bytes (expected 44)
+      -> sanity check: matches
+  How to read it: each address is the start of a block obtained
+  from malloc/realloc on the heap; the selected entry is a member
+  of the array, so its address is the array base plus the byte
+  offset of that element.
+
+---------------------------- MENU ----------------------------
+  1. Use the default Austen paragraph
+  2. Enter or paste my own paragraph
+  3. Count words
+  4. Longest word
+  5. Most frequent word
+  6. Display word statistics
+  7. Sort word statistics
+  8. Search for a word
+  9. Text summary
+ 10. Lexical Diversity analysis (custom)
+ 11. Memory inspection
+  0. Exit
+--------------------------------------------------------------
+Choose an option (0-11): 0
+Exiting: all memory will now be freed.
+Freed: text buffer (heap block, 256 bytes) and word statistics array (heap block, 16 entries).
+
+Expected: truncated_words = 1, stored name cut to 39 characters,
+          longest_word reports the true length 60. -> MATCHED
+
+======================================================================
+ TEST 7a: every operation run BEFORE any text is loaded
+======================================================================
+Input: options 3,4,5,6,7,8,9,10,11 on a fresh program (no text).
+----------------------------------------------------------------------
+======================================================================
+Student ID: 12345
+Project: Dynamic Text Mining and Linguistic Pattern Analyzer
+Source: Pride and Prejudice by Jane Austen (1813), Chapter 3. Project Gutenberg eBook #1342 (public domain)
+Custom Analysis: Lexical Diversity Score
+======================================================================
+
+---------------------------- MENU ----------------------------
+  1. Use the default Austen paragraph
+  2. Enter or paste my own paragraph
+  3. Count words
+  4. Longest word
+  5. Most frequent word
+  6. Display word statistics
+  7. Sort word statistics
+  8. Search for a word
+  9. Text summary
+ 10. Lexical Diversity analysis (custom)
+ 11. Memory inspection
+  0. Exit
+--------------------------------------------------------------
+Choose an option (0-11): 3
+No text loaded yet - choose option 1 (default paragraph) or option 2 (your own text) first.
+
+---------------------------- MENU ----------------------------
+  1. Use the default Austen paragraph
+  2. Enter or paste my own paragraph
+  3. Count words
+  4. Longest word
+  5. Most frequent word
+  6. Display word statistics
+  7. Sort word statistics
+  8. Search for a word
+  9. Text summary
+ 10. Lexical Diversity analysis (custom)
+ 11. Memory inspection
+  0. Exit
+--------------------------------------------------------------
+Choose an option (0-11): 4
+No text loaded yet - choose option 1 (default paragraph) or option 2 (your own text) first.
+
+---------------------------- MENU ----------------------------
+  1. Use the default Austen paragraph
+  2. Enter or paste my own paragraph
+  3. Count words
+  4. Longest word
+  5. Most frequent word
+  6. Display word statistics
+  7. Sort word statistics
+  8. Search for a word
+  9. Text summary
+ 10. Lexical Diversity analysis (custom)
+ 11. Memory inspection
+  0. Exit
+--------------------------------------------------------------
+Choose an option (0-11): 5
+No text loaded yet - choose option 1 (default paragraph) or option 2 (your own text) first.
+
+---------------------------- MENU ----------------------------
+  1. Use the default Austen paragraph
+  2. Enter or paste my own paragraph
+  3. Count words
+  4. Longest word
+  5. Most frequent word
+  6. Display word statistics
+  7. Sort word statistics
+  8. Search for a word
+  9. Text summary
+ 10. Lexical Diversity analysis (custom)
+ 11. Memory inspection
+  0. Exit
+--------------------------------------------------------------
+Choose an option (0-11): 6
+No text loaded yet - choose option 1 (default paragraph) or option 2 (your own text) first.
+
+---------------------------- MENU ----------------------------
+  1. Use the default Austen paragraph
+  2. Enter or paste my own paragraph
+  3. Count words
+  4. Longest word
+  5. Most frequent word
+  6. Display word statistics
+  7. Sort word statistics
+  8. Search for a word
+  9. Text summary
+ 10. Lexical Diversity analysis (custom)
+ 11. Memory inspection
+  0. Exit
+--------------------------------------------------------------
+Choose an option (0-11): 7
+No text loaded yet - choose option 1 (default paragraph) or option 2 (your own text) first.
+
+---------------------------- MENU ----------------------------
+  1. Use the default Austen paragraph
+  2. Enter or paste my own paragraph
+  3. Count words
+  4. Longest word
+  5. Most frequent word
+  6. Display word statistics
+  7. Sort word statistics
+  8. Search for a word
+  9. Text summary
+ 10. Lexical Diversity analysis (custom)
+ 11. Memory inspection
+  0. Exit
+--------------------------------------------------------------
+Choose an option (0-11): 8
+No text loaded yet - choose option 1 (default paragraph) or option 2 (your own text) first.
+
+---------------------------- MENU ----------------------------
+  1. Use the default Austen paragraph
+  2. Enter or paste my own paragraph
+  3. Count words
+  4. Longest word
+  5. Most frequent word
+  6. Display word statistics
+  7. Sort word statistics
+  8. Search for a word
+  9. Text summary
+ 10. Lexical Diversity analysis (custom)
+ 11. Memory inspection
+  0. Exit
+--------------------------------------------------------------
+Choose an option (0-11): 9
+======================================================================
+Student ID: 12345
+Project: Dynamic Text Mining and Linguistic Pattern Analyzer
+Source: Pride and Prejudice by Jane Austen (1813), Chapter 3. Project Gutenberg eBook #1342 (public domain)
+Custom Analysis: Lexical Diversity Score
+======================================================================
+No text loaded yet - choose option 1 (default paragraph) or option 2 (your own text) first.
+
+---------------------------- MENU ----------------------------
+  1. Use the default Austen paragraph
+  2. Enter or paste my own paragraph
+  3. Count words
+  4. Longest word
+  5. Most frequent word
+  6. Display word statistics
+  7. Sort word statistics
+  8. Search for a word
+  9. Text summary
+ 10. Lexical Diversity analysis (custom)
+ 11. Memory inspection
+  0. Exit
+--------------------------------------------------------------
+Choose an option (0-11): 10
+No text loaded yet - choose option 1 (default paragraph) or option 2 (your own text) first.
+
+---------------------------- MENU ----------------------------
+  1. Use the default Austen paragraph
+  2. Enter or paste my own paragraph
+  3. Count words
+  4. Longest word
+  5. Most frequent word
+  6. Display word statistics
+  7. Sort word statistics
+  8. Search for a word
+  9. Text summary
+ 10. Lexical Diversity analysis (custom)
+ 11. Memory inspection
+  0. Exit
+--------------------------------------------------------------
+Choose an option (0-11): 11
+------------------------------------------------------------------
+ MEMORY INSPECTION (addresses printed with %p as (void *))
+------------------------------------------------------------------
+  Text buffer address         : (nil)
+      -> no heap block yet: no text has been loaded
+  Word statistics array       : (nil)
+      -> no heap block yet: no text has been analysed
+  Selected word-stat entry    : (none)
+      -> the array is empty, so no element can be selected
+  How to read it: each address is the start of a block obtained
+  from malloc/realloc on the heap; the selected entry is a member
+  of the array, so its address is the array base plus the byte
+  offset of that element.
+
+---------------------------- MENU ----------------------------
+  1. Use the default Austen paragraph
+  2. Enter or paste my own paragraph
+  3. Count words
+  4. Longest word
+  5. Most frequent word
+  6. Display word statistics
+  7. Sort word statistics
+  8. Search for a word
+  9. Text summary
+ 10. Lexical Diversity analysis (custom)
+ 11. Memory inspection
+  0. Exit
+--------------------------------------------------------------
+Choose an option (0-11): 0
+Exiting: all memory will now be freed.
+Freed: text buffer (none, 0 bytes) and word statistics array (none, 0 entries).
+
+Expected: clear message, no crash, no null dereference. -> MATCHED
+
+======================================================================
+ TEST 7b: empty input and whitespace-only input
+======================================================================
+Input: 1 (load default), 3, then 2 immediately followed by END,
+       3 again, then 2 with a whitespace-only line and END, 3 again.
+----------------------------------------------------------------------
+======================================================================
+Student ID: 12345
+Project: Dynamic Text Mining and Linguistic Pattern Analyzer
+Source: Pride and Prejudice by Jane Austen (1813), Chapter 3. Project Gutenberg eBook #1342 (public domain)
+Custom Analysis: Lexical Diversity Score
+======================================================================
+
+---------------------------- MENU ----------------------------
+  1. Use the default Austen paragraph
+  2. Enter or paste my own paragraph
+  3. Count words
+  4. Longest word
+  5. Most frequent word
+  6. Display word statistics
+  7. Sort word statistics
+  8. Search for a word
+  9. Text summary
+ 10. Lexical Diversity analysis (custom)
+ 11. Memory inspection
+  0. Exit
+--------------------------------------------------------------
+Choose an option (0-11): 1
+Loaded the default paragraph: 989 characters (heap block allocated with malloc, 990 bytes).
+Choose option 3 to count the words.
+
+---------------------------- MENU ----------------------------
+  1. Use the default Austen paragraph
+  2. Enter or paste my own paragraph
+  3. Count words
+  4. Longest word
+  5. Most frequent word
+  6. Display word statistics
+  7. Sort word statistics
+  8. Search for a word
+  9. Text summary
+ 10. Lexical Diversity analysis (custom)
+ 11. Memory inspection
+  0. Exit
+--------------------------------------------------------------
+Choose an option (0-11): 3
+Total words     : 168
+Distinct words  : 104
+Truncated words : 0 (longer than 39 characters)
+
+---------------------------- MENU ----------------------------
+  1. Use the default Austen paragraph
+  2. Enter or paste my own paragraph
+  3. Count words
+  4. Longest word
+  5. Most frequent word
+  6. Display word statistics
+  7. Sort word statistics
+  8. Search for a word
+  9. Text summary
+ 10. Lexical Diversity analysis (custom)
+ 11. Memory inspection
+  0. Exit
+--------------------------------------------------------------
+Choose an option (0-11): 2
+Paste or type your text (any length).
+End with a line containing only END, or with EOF.
+Empty input: no text entered. The previous text is kept.
+
+---------------------------- MENU ----------------------------
+  1. Use the default Austen paragraph
+  2. Enter or paste my own paragraph
+  3. Count words
+  4. Longest word
+  5. Most frequent word
+  6. Display word statistics
+  7. Sort word statistics
+  8. Search for a word
+  9. Text summary
+ 10. Lexical Diversity analysis (custom)
+ 11. Memory inspection
+  0. Exit
+--------------------------------------------------------------
+Choose an option (0-11): 3
+Total words     : 168
+Distinct words  : 104
+Truncated words : 0 (longer than 39 characters)
+
+---------------------------- MENU ----------------------------
+  1. Use the default Austen paragraph
+  2. Enter or paste my own paragraph
+  3. Count words
+  4. Longest word
+  5. Most frequent word
+  6. Display word statistics
+  7. Sort word statistics
+  8. Search for a word
+  9. Text summary
+ 10. Lexical Diversity analysis (custom)
+ 11. Memory inspection
+  0. Exit
+--------------------------------------------------------------
+Choose an option (0-11): 2
+Paste or type your text (any length).
+End with a line containing only END, or with EOF.
+   	 
+Empty input: only whitespace was entered. The previous text is kept.
+
+---------------------------- MENU ----------------------------
+  1. Use the default Austen paragraph
+  2. Enter or paste my own paragraph
+  3. Count words
+  4. Longest word
+  5. Most frequent word
+  6. Display word statistics
+  7. Sort word statistics
+  8. Search for a word
+  9. Text summary
+ 10. Lexical Diversity analysis (custom)
+ 11. Memory inspection
+  0. Exit
+--------------------------------------------------------------
+Choose an option (0-11): 3
+Total words     : 168
+Distinct words  : 104
+Truncated words : 0 (longer than 39 characters)
+
+---------------------------- MENU ----------------------------
+  1. Use the default Austen paragraph
+  2. Enter or paste my own paragraph
+  3. Count words
+  4. Longest word
+  5. Most frequent word
+  6. Display word statistics
+  7. Sort word statistics
+  8. Search for a word
+  9. Text summary
+ 10. Lexical Diversity analysis (custom)
+ 11. Memory inspection
+  0. Exit
+--------------------------------------------------------------
+Choose an option (0-11): 0
+Exiting: all memory will now be freed.
+Freed: text buffer (heap block, 990 bytes) and word statistics array (heap block, 128 entries).
+
+Expected: both empty attempts refused, previous text kept
+          (168 / 104 unchanged). -> MATCHED
+
+======================================================================
+ TEST 8: sanitizers (address + undefined behaviour)
+======================================================================
+valgrind: not installed on this machine.
+gcc libasan/libubsan runtime: missing (link error:
+  /usr/lib64/libasan.so.8.0.0: No such file or directory),
+  so the sanitizer build uses clang, which bundles compiler-rt.
+
+$ clang -Wall -Wextra -std=c11 -g -fsanitize=address,undefined \
+      -o analyzer_asan main.c
+  -> 0 warnings
+
+Runs (every test above, including the 20k-word input and the full
+demonstration script), all with ASan+UBSan and leak checking on:
+
+  t3     exit=0  sanitizer diagnostics: 0
+  t4     exit=0  sanitizer diagnostics: 0
+  t6     exit=0  sanitizer diagnostics: 0
+  t7a    exit=0  sanitizer diagnostics: 0
+  t7     exit=0  sanitizer diagnostics: 0
+  big    exit=0  sanitizer diagnostics: 0
+  demo   exit=0  sanitizer diagnostics: 0
+
+LeakSanitizer reported nothing (no sanitizer error line, no
+'SUMMARY: AddressSanitizer' line), so there are no leaks, no
+out-of-bounds accesses and no undefined-behaviour reports.
+Last lines of a sanitizer run:
+----------------------------------------------------------------------
+--------------------------------------------------------------
+Choose an option (0-11): 0
+Exiting: all memory will now be freed.
+Freed: text buffer (heap block, 990 bytes) and word statistics array (heap block, 128 entries).
+======================================================================
